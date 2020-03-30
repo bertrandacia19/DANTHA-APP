@@ -5,6 +5,13 @@ body, html{
     
 }
 
+img{
+    padding: 30px;
+    width: 50px;
+    height:50px;
+    align-items: center;
+    bottom: 10px;
+}
 
 .contenedor {
     height: 100px;
@@ -19,11 +26,14 @@ body, html{
   font-style: italic;
     text-decoration: none;
     color: #000;
-   
+    text-decoration: none;
+    color: #000;
+
 }
 .esconder {
     display: none;
 }
+
 
 
 
@@ -36,8 +46,8 @@ body, html{
     background-size: 600% 100%;
     animation: gradient 16s linear infinite;
     animation-direction: alternate;
+
     text-align: center;
-    
 
 }
 #h1{
@@ -145,12 +155,11 @@ menu {
       
   }
 
+
   menu:hover{
     padding-bottom: 5px; 
     
   }
-
-
 
   menu li i{
     width: 0.5 px;
