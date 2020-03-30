@@ -1,14 +1,25 @@
 {
-  "name": "projecto",
+  "name": "electron-quick-start",
   "version": "1.0.0",
-  "description": "",
+  "description": "A minimal Electron application",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
-  "author": "Josue Lopez",
-  "license": "ISC",
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^8.1.1"
+    "electron": "^8.0.3"
+  },
+  "dependencies": {
+    "bootstrap": "^4.4.1"
   }
 }
