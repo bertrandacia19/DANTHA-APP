@@ -54,13 +54,13 @@
             <div class="row no-margin">
         
               <div class="col-md-3">
-                <img src="./assets/images/TRhVkOG.jpg" id="background" />
+                <img src="./assets/images/igonorantes.jpg" id="background" />
                 <audio src="./assets/music/Ignorantes - Bad Bunny x Sech (Letra) (MUSICAQ).mp3" id="song"></audio>
             
                 <div class="container"> 
                     <div class="cuadro"></div> 
                     <div class="box"></div>      
-                    <img src="./assets/images/yhlqmdlg.jpg" id="thumbnail" />
+                    <img src="./assets/images/igonorantes.jpg" id="thumbnail" />
                     
                     <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" />
                     <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" />
@@ -90,11 +90,24 @@
             </div>
           </div>
         </div>
+        <div>
+          <input 
+                        type="range" 
+                        id="bar" 
+                        min="0" 
+                        max="" 
+                        value="0" 
+                        onchange="changeProgressBar()"
+                    />
+            
+                    <div class="cTime"></div>
+                    <div class="dTime"></div>
+        </div>
+        
         <nav>
           <a href="#" class="no-padding-right get-stated-show" id="get-started-btn">
           </a>
           <menu>
-            
             <li><a href="#"><i class="fas fa-volume-up"></i></a></li>
             <li><a href="#"><i class="fas fa-volume-mute"></i></a></li>
             <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>

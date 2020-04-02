@@ -113,10 +113,10 @@ menu {
   margin: 0;
   width: 80%;
   height: 50px;
-  background-color: #042331;
+  background-color: #032535;
   display: flex;
   position: fixed;
-  bottom: 1%;
+  bottom: 0.8%;
   left: 18%;
   right: 0;
   margin-top: 0;
@@ -148,6 +148,41 @@ z-index: 10;
 
 }
 
+/* style for the progress bar */
+div #bar {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  z-index: 4;
+  height: 5px;
+  background: #000000;
+  width: 100%;
+  bottom: 8%;
+  border-radius: 30px;
+  left: 0%;
+}
+
+/* style for the progress bar's slider thumb */
+div #bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -3px;
+  margin-left: 0px;
+  height: 10px;
+  width: 7px;
+  border: 0;
+  background: -webkit-linear-gradient(45deg,  rgb(213, 213, 213), rgb(193, 255, 6));
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* style for the progress bar's runnable track */
+div #bar::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  max-height: 5px;
+  border-radius: 30px;
+}
 
 
 
@@ -162,6 +197,7 @@ body{background:#000;}
   padding-bottom: 0px;
   display: none;
   z-index: 99;
+  
 }
 
 #get-started-btn {
@@ -169,14 +205,12 @@ body{background:#000;}
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: #fff;
-    background: #042331;
+    background: #032535;
     position: absolute;
     right: 0;
     bottom: 19px;
     padding: 25px ;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border:#FFF 2px solid;
+    border:#FFF 0px solid;
     display: flex;
      height: 1%;
       bottom: 0;
@@ -186,6 +220,7 @@ body{background:#000;}
       margin: 0px;
       justify-content: space-around;
       align-items: center;
+      filter: blur(-1px)
       
   }
   
@@ -209,19 +244,19 @@ body{background:#000;}
   
   #get-started-close {
     position: absolute;
-    right: 100px;
+    right: 4%;
     top: 15px;
-    width: 2pt;
-    height: 2pt;
-    font-size: 2;
-    opacity: 0.5;
+    width: 2%;
+    height: 2%;
+    font-size: -1;
+    opacity: 15%;
     z-index: 99;
   }
   
   #get-started-close:hover,
   #get-started-close:active,
   #get-started-close:focus {
-    opacity: 1
+    opacity: 30%
   }
   
   .get-started-container {
@@ -291,7 +326,7 @@ body{background:#000;}
 .container {
   position: absolute;
   height: 92%;
-  width: 65%;
+  width: 85%;
   margin: auto;
   top: 0;
   left: 0;
@@ -346,7 +381,7 @@ body{background:#000;}
   font-weight: bold;
   font-size: 20px;
   bottom: 94%;
-  left: 41.6%;
+  left: 43.5%;
   text-align: center;
 }
 
@@ -358,7 +393,7 @@ body{background:#000;}
   font-family: 'Montserrat', sans-serif;
   font-size: 17px;
   bottom: 91%;
-  left: 41.6%;
+  left: 43.5%;
   text-align: center;
 }
 
@@ -372,7 +407,7 @@ body{background:#000;}
   bottom: 1.4%;
   z-index: 4;
   font-size: 53px;
-  left: 40%;
+  left: 46%;
 }
 
 /* style for next and previous song images */
@@ -385,7 +420,7 @@ body{background:#000;}
   bottom: 1.7%;
   font-size: 40px;
   z-index: 4;
-  left: 56%;
+  left: 62%;
 }
 
 #previous-song{
@@ -397,7 +432,7 @@ body{background:#000;}
   bottom: 1.7%;
   font-size: 40px;
   z-index: 4;
-  left: 27%;
+  left: 32%;
 }
 
 
@@ -439,7 +474,7 @@ body{background:#000;}
   z-index: 4;
   height: 5px;
   background: #000000;
-  width: 700pt;
+  width: 870.8pt;
   bottom: 14%;
   border-radius: 30px;
   left: 0%;
@@ -480,7 +515,7 @@ body{background:#000;}
     left: 0;
     right: 0;
     bottom: 0;
-    filter: blur(10px);
+    filter: blur(5px);
     z-index: -1;
 }
 .col-md-3 {

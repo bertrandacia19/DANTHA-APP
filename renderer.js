@@ -25,12 +25,12 @@ for (let i = 0; i < enlaces.length; i++) {
 
 let pPause = document.querySelector('#play-pause'); // element where play and pause image appears
 songIndex = 0;
-songs = ['./assets/music/blame.mp3', './assets/music/dontstartnow.mp3', './assets/music/Calvin Harris - Outside (Official Video) ft. Ellie Goulding (MUSICAQ).mp3', './assets/music/SAINt JHN - ROSES (IMANBEK REMIX) (MUSICAQ).mp3', './assets/music/Tones and I - Dance Monkey (Lyrics) 🎵 (MUSICAQ).mp3']; // object storing paths for audio objects
+songs = ['./assets/music/Ignorantes - Bad Bunny x Sech (Letra) (MUSICAQ).mp3', './assets/music/blame.mp3', './assets/music/dontstartnow.mp3', './assets/music/Calvin Harris - Outside (Official Video) ft. Ellie Goulding (MUSICAQ).mp3', './assets/music/SAINt JHN - ROSES (IMANBEK REMIX) (MUSICAQ).mp3', './assets/music/Tones and I - Dance Monkey (Lyrics) 🎵 (MUSICAQ).mp3']; // object storing paths for audio objects
 
 
-thumbnails = ['./assets/images/71CQOBu6sWL._SS500_.jpg', './assets/images/dontstartnow.png', './assets/images/outside.png', './assets/images/roses.jpg', './assets/images/DanceMonkey.jpg']; // object storing paths for album covers and backgrounds
+thumbnails = ['./assets/images/igonorantes.jpg', './assets/images/71CQOBu6sWL._SS500_.jpg', './assets/images/dontstartnow.png', './assets/images/outside.png', './assets/images/roses.jpg', './assets/images/DanceMonkey.jpg']; // object storing paths for album covers and backgrounds
 
-songArtists = ['Calvin Harris', 'Dua Lipa', 'Calvin Harris', 'SAINt JHN', 'Tones & I']; // object storing track artists
+songArtists = ['Bad Bunny', 'Calvin Harris', 'Dua Lipa', 'Calvin Harris', 'SAINt JHN', 'Tones & I']; // object storing track artists
 songTitles = ["Blame",, "Don't Start Now", "Outside", "Imanbek Remix", "Dance Monkey", ]; // object storing track titles
 
 // function where pp (play-pause) element changes based on playing boolean value - if play button clicked, change pp.src to pause button and call song.play() and vice versa.
@@ -62,8 +62,8 @@ song.addEventListener('ended', function(){
 // function where songIndex is incremented, song/thumbnail image/background image/song artist/song title changes to next index value, and playPause() runs to play next track 
 function nextSong() {
     songIndex++;
-    if (songIndex > 4) {
-        songIndex = 4;
+    if (songIndex > 0) {
+        songIndex = 5;
     };
     song.src = songs[songIndex];
     thumbnail.src = thumbnails[songIndex];
@@ -80,7 +80,7 @@ function nextSong() {
 function previousSong() {
     songIndex--;
     if (songIndex < 0) {
-        songIndex = 4;
+        songIndex = 5;
     };
     song.src = songs[songIndex];
     thumbnail.src = thumbnails[songIndex];
