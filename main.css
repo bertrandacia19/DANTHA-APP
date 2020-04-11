@@ -1,32 +1,49 @@
-body, html{
-    margin: 0vh;
-   /* height: 0vh;
-    padding: 0vh;*/
-    
-    
+html{
+  box-sizing: border-box;
 }
 
-.wrapper {
+body{
+  font-family: tahoma;
+    padding: 0;
+    margin: 0;
+    background: rgb(37, 37, 37);
+}
+*,*:before,
+*:after{
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+}
+img{
+    padding: 0px;
     width: 100%;
-    height: 100%;
+    height:200px;
+    align-items: center;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    bottom: 20px;
+}
+
+#musica{
+  display: flex;
+  flex-direction: row;
+}
+
+.contenedor {
+    height: 100px;
+    background-color: #FFF;
+    box-shadow: 0 1px 5px #000;
     display: flex;
-    flex-direction: column;
-    position: relative;
-    background: linear-gradient(45deg,#F17C58, #E94584, #24AADB , #27DBB1,#FFDC18, #FF3706);
-    background-size: 600% 100%;
-    animation: gradient 16s linear infinite;
-    animation-direction: alternate;
+    margin-top: 0;
+    justify-content: space-around;
+    align-items: center;
 }
-@keyframes gradient {
-    0% {background-position: 0%}
-    100% {background-position: 100%}
+.contenedor a {
+    text-decoration: none;
+    color: #000;
 }
-
-div.cancion{
-    width: 100%;
-    height: 100%;
-    position: relative;
-    left: 40%;
+.esconder {
+    display: none;
 }
 
 *{
@@ -34,100 +51,613 @@ div.cancion{
     padding: 0px;
     list-style: none;
     text-decoration: none;
+    font-family: sans-serif;
+}
+h1{
+  color: #fff;
 }
 
 .sidebar{
-   position: fixed;
-   left: -250px;
-   width: 250px;
-   height: 100%;
-   background: #042331;
-   transition: all .5s ease;
-
+  position: fixed;
+  width: 22%;
+  height: 100%;
+  background: #042331;
 }
 
 .sidebar header{
-    font-size: 22px;
-    color: white;
-    text-align: center;
-    line-height: 70px;
-    background: #063146;
-    user-select: none;
+   font-size: 100spx;
+   color: white;
+   text-align: center;
+   line-height: 70px;
+   background: #063146;
+   user-select: none;
+   align-items: center;
 }
 
-.sidebar ul a{
-    display: block;
-    height: 100%;
-    width: 100%;
-    line-height: 65px;
-    font-size: 20px;
-    color: white;
-    padding-left: 40px;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(255,255,255,.1);
-    border-bottom: 1px solid black;
-    transition: .4s;
+a{
+   text-align: center;
+   color: green;
+   text-size-adjust: 30% ;
+   padding: 0%;
 }
 
-ul li:hover a{
-    padding-left: 60px;
+ul.navigation_ul a{
+   display: block;
+   height: 30%;
+   width: 100%;
+   align-items: center;
+   line-height: 50px;
+   font-size: 20px;
+   color: white;
+   padding-left: 30px;
+   box-sizing: border-box;
+   border-top: 1px solid rgba(255,255,255,.1);
+   border-bottom: 1px solid black;
+   transition: .4s;
 }
 
 .sidebar ul a i{
-    margin-right: 16px;
+   margin-right: 0px;
+   width: 30px;
+   height: 40px;
+}
+   
+
+menu {
+  padding: 0;
+  margin: 0;
+  width: 80%;
+  height: 50px;
+  background-color: #032535;
+  display: flex;
+  position: fixed;
+  bottom: 0.8%;
+  left: 18%;
+  right: 0;
+  margin-top: 0;
+  margin: 0px;
+  justify-content: space-around;
+  align-items: center;
+ z-index: 9;
+
+}
+menu a {
+  text-decoration: none;
+  
 }
 
-#check{
-    display: none;
+
+
+
+menu li i{
+width: 0.5 px;
+left: 0px;
+top: 0px;
+font-size: 35px;
+color: rgb(249, 248, 250);
+border-radius: 3px;
+padding: 0;
+transition: all .5s;
+margin: 1px;
+z-index: 10;
 
 }
 
-label #btn, label #cancel{
+/* style for the progress bar */
+div #bar {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  z-index: 4;
+  height: 5px;
+  background: #000000;
+  width: 100%;
+  bottom: 8%;
+  border-radius: 30px;
+  left: 0%;
+}
+
+/* style for the progress bar's slider thumb */
+div #bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -3px;
+  margin-left: 0px;
+  height: 10px;
+  width: 7px;
+  border: 0;
+  background: -webkit-linear-gradient(45deg,  rgb(213, 213, 213), rgb(193, 255, 6));
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* style for the progress bar's runnable track */
+div #bar::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  max-height: 5px;
+  border-radius: 30px;
+}
+
+.cancion {
+  border-radius:16px;
+   background-color:rgb(71, 66, 66);
+   left: 23%;
+   width: 250px;
+   height: 320px;
+   padding: 0px;
+   margin: 5px; 
+}
+
+body{background:#000;}
+.get-started {
+  width: 100%;
+  height: 100%;
+  background: #042331;
+  color: #fff;
+  position:absolute;
+  bottom:0;
+  padding-bottom: 0px;
+  display: none;
+  z-index: 99;
+  
+}
+
+#get-started-btn {
+    font: 100 14px/20px 'Open Sans', Verdana, sans-serif;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #032535;
     position: absolute;
-    cursor: pointer;
+    right: 0;
+    bottom: 19px;
+    padding: 25px ;
+    border:#FFF 0px solid;
+    display: flex;
+     height: 1%;
+      bottom: 0;
+      left: 0%;
+      right: 0;
+      margin-top: 0;
+      margin: 0px;
+      justify-content: space-around;
+      align-items: center;
+      filter: blur(-1px)
+      
+  }
+  
+  #get-started-btn:hover,
+  #get-started-btn:active {
+    text-decoration: none;
+      -webkit-box-shadow: -3px 0px 25px 4px #042331;
+    -moz-box-shadow: -3px 0px 25px 4px #042331;
+    box-shadow: -3px 0px 25px 4px #042331;
+    transition: box-shadow 20s ease-in-out;
+    -moz-transition: box-shadow 20s ease-in-out;
+      -webkit-transition: box-shadow 20s ease-in-out;
+      -o-transition: box-shadow 20s ease-in-out;
+      -ms-transition:box-shadow 20s ease-in-out;
+      
+  }
+  
+  #get-started-btn:focus {
+    text-decoration: none;
+  }
+  
+  #get-started-close {
+    position: absolute;
+    right: 4%;
+    top: 15px;
+    width: 2%;
+    height: 2%;
+    font-size: -1;
+    opacity: 15%;
+    z-index: 99;
+  }
+  
+  #get-started-close:hover,
+  #get-started-close:active,
+  #get-started-close:focus {
+    opacity: 30%
+  }
+  
+  .get-started-container {
+    color: #fff;
+    padding-top: 0px;
+    text-align: center;
+ 
+  }
+  
+  .get-started-heading {
+    font-size: 22px;
+    margin-bottom: 0px;
+    color: #fff;
+  }
+  
+  .line {
+    height: 2px;
+    width: 120px;
     background: #042331;
+    margin: auto auto 15px auto;
+  
+  }
+  
+  .white-link-sm {
+    font-size: 14px;
+    color: #fff;
+  }
+  
+  .white-link-sm:hover,
+  .white-link-sm:active,
+  .white-link-sm:focus {
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  .get-stated-hide {
+    display: block;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  li {
+    margin-bottom: 5px;
+  }
+  
+  a:hover,
+  a:active,
+  a:focus {
+    text-decoration: none;
+  }
+  
+  @media (max-width: 991px) {
+    .get-started-heading.first {
+      margin-top: 15px;
+    }
+    .get-started-heading {
+      margin-top: 30px;
+    }
+  }
+  @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+  
+/* container for music player */
+.container {
+  position: absolute;
+  height: 92%;
+  width: 85%;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000000;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000000;
 }
 
-label #btn{
-    left: 40px;
-    top: 25px;
-    font-size: 35px;
-    color: white;
-    border-radius: 3px;
-    padding: 6px 12px;
-    transition: all .5s;
+.cuadro {
+  position: absolute;
+  height: 40%;
+  width: 199%;
+  background: -webkit-linear-gradient(45deg, rgb(40, 40, 40), #042331);
+  z-index: 4;
+  bottom: 90%;
+  opacity: 50%;
 }
 
-label #cancel{
-    z-index: 1111;
-    left: -195px;
-    top: 17px;
-    font-size: 30px;
-    color: #0a5275;
-    padding: 4px 9px;
-    transition: all .5s ease;
+/* container for play, pause, previous track, next track, and progress bar  */
+.box {
+  position: absolute;
+  height: 31%;
+  width: 200%;
+  background: -webkit-linear-gradient(45deg, rgb(40, 40, 40), #042331);
+  z-index: 4;
+  bottom: -17%;
+  opacity: 60%;
 }
 
-#check:checked ~ .sidebar{
+/* album cover */
+#thumbnail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -8%;
+  transition: 1s;
+  z-index: 3;
+}
+
+/* track artist */
+.song-artist {
+  position: absolute;
+  z-index: 4;
+  color: rgb(193, 255, 6);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  bottom: 94%;
+  left: 43.5%;
+  text-align: center;
+}
+
+/* track title */
+.song-title {
+  position: absolute;
+  z-index: 4;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  bottom: 91%;
+  left: 43.5%;
+  text-align: center;
+}
+
+/* style for play and pause images */
+#play-pause {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  filter: invert(1);
+  cursor: pointer;
+  bottom: 1.4%;
+  z-index: 4;
+  font-size: 53px;
+  left: 46%;
+}
+
+/* style for next and previous song images */
+#next-song{
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  filter: invert(1);
+  cursor: pointer;
+  bottom: 1.7%;
+  font-size: 40px;
+  z-index: 4;
+  left: 62%;
+}
+
+#previous-song{
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  filter: invert(1);
+  cursor: pointer;
+  bottom: 1.7%;
+  font-size: 40px;
+  z-index: 4;
+  left: 32%;
+}
+
+
+/* style for current time of the track */
+.currentTime {
+  position: absolute;
+  height: 72px;
+  width: 50px;
+  cursor: pointer;
+  bottom: 0%;
+  left: 5%;
+  z-index: 4;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: white;
+  align-items: center;
+}
+
+/* style for the total length of the track */
+.durationTime {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  bottom: 4%;
+  right: 4%;
+  z-index: 4;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  align-items: center;
+  color: rgb(193, 255, 6);
+}
+
+/* style for the progress bar */
+#progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  z-index: 4;
+  height: 5px;
+  background: #000000;
+  width: 100%;
+  bottom: 14%;
+  border-radius: 30px;
+  left: 0%;
+}
+
+/* style for the progress bar's slider thumb */
+#progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -3px;
+  margin-left: 0px;
+  height: 10px;
+  width: 7px;
+  border: 0;
+  background: -webkit-linear-gradient(45deg,  rgb(213, 213, 213), rgb(193, 255, 6));
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+/* style for the progress bar's runnable track */
+#progress-bar::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  max-height: 5px;
+  border-radius: 30px;
+}
+
+/* style to remove blue shade of the progress bar when clicked on/selected */
+#progress-bar:focus {
+  outline: none;
+}
+ #background {
+  position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(5px);
+    z-index: -1;
+}
+.col-md-3 {
+  background: #000000;
+  z-index: -2;
 }
 
-#check:checked ~ label #btn{
-    left: 250;
-    opacity: 0;
-    pointer-events: none;
-
-}
-#check:checked ~ label #cancel{
-    left: 195px;
+.col-md-3{
+  width: 50%;
 }
 
-#check:checked ~ section{
-    margin-left: 250px;
+.navigation{
+  width:100px;
+  height: 100%;
+  display: block;
+  padding-right: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: whitesmoke;
+  border-radius: 0% 50% 350% 0%;
+  perspective: 800;
+  transition: all 800ms cubic-bezier(.9,0,.33,1);
 }
 
-section{
-    height: 100vh;
-    transition: all .5s;
+.navigation_icon{
+  width: 55px;
+  height: 44px;
+  display: block;
+  position: relative;
+  top: 22%;
+  left: 35%;
+  background: hsla(312, 32%, 66%, 0.6);
+  cursor: pointer;
+  transition: all 800ms cubic-bezier(.9,0,.33,1);
+
+}
+
+.navigation_icon .topbar{
+  width: 55px;
+  height: 2px;
+  display: block;
+  background: #fc0363;
+  position: absolute;
+  top: 10px;
+  transform: rotate(0);
+  transition: all 800ms cubic-bezier(.9,0,.33,1);
+}
+
+.navigation_icon .middlebar{
+  width: 55px;
+  height: 3px;
+  display: block;
+  background: #fc0363;
+  position: absolute;
+  top: 20px;
+  transform: rotate(0);
+  transition: all 800ms cubic-bezier(.9,0,.33,1);
+}
+
+.navigation_icon .bottombar{
+  width: 35px;
+  height: 3px;
+  display: block;
+  background: #fc0363;
+  position: absolute;
+  top: 30px;
+  transform: rotate(0);
+  transition: all 800ms cubic-bezier(.9,0,.33,1);
+}
+
+.navigation .navigation_ul{
+  float: right;
+  margin-top: 220px; 
+  opacity: 0;
+  visibility: hidden;
+  transform: rotateY(-90deg) translateX(-300px);
+  transition: all 800ms cubic-bezier(.9,0,.33,1);
+}
+
+.navigation .navigation_ul li{
+  list-style: none;
+  text-align: center;
+}
+
+.navigation .navigation_ul a{
+  display: block;
+  font-size: 30px;
+  font-weight: 800;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+  margin-bottom: 15px;
+}
+
+.navigation .navigation_ul a:hover{
+  /*color: hsl(185, 96%, 33%);*/
+ color: #8D87FF;
+ 
+}
+
+.navigation-open{
+  width: 350px;
+  height: 100%;
+  display: block;
+  background: whitesmoke;
+  position: absolute;
+  left: 0;
+  border-radius: 0% 1% 1% 0%;
+}
+
+.navigation-open .navigation_icon{
+  left: 80%;
+}
+
+.navigation-open .navigation_ul{
+  opacity: 1;
+  visibility: visible;
+}
+
+.navigation-open .topbar{
+  top: 21px;
+  transform: rotate(45deg);
+}
+.navigation-open .middlebar{
+  width: 0;
+  top: 22px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(30px);
+}
+.navigation-open .bottombar{
+  width: 55;
+  top: 21px;
+  transform: rotate(-45deg);
+}
+
+.navigation-open .navigation_ul{
+  transform: rotateY(0) translateX(0);
+
 }
 

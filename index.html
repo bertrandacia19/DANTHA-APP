@@ -2,51 +2,147 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>Dantha Player Music</title>
     <link rel="stylesheet" href="./main.css" type="text/css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    
-    
   </head>
-  <body>
+  <body onload="cargar()">
 
-      <div class="wrapper">
-        <div id="cancion">
-          <div>
-            <img src="" alt="" class="picture">
-            <h1 class="title"></h1>
-            <h2 class="artist"></h2>
-            <h2 class="genere"></h2>
-            <h3 class="album"></h3>
-            <h4 class="tiempo"></h4>
-          </div>
-        </div>
+      <div>
+        <header class="header">
+        <nav class="navigation">
+          <section class="navigation_icon">
+          <span class="topbar"></span>
+          <span class="middlebar"></span>
+          <span class="bottombar"></span>
+        </section>
+        <ul class="navigation_ul">
         
-      <input type="checkbox" id="check">
-      <label for="check">
-      <i class="fas fa-bars" id="btn"></i>
-      <i class="fas fa-times" id="cancel"></i>
-      </label>
-    
-      <div class="sidebar">
-        <header>¡Dale Play!</header>
-        <ul>
-
-        <li><a href="#"><i class="fas fa-music"></i>Musica</a></li>
-        <li><a href="#"><i class="fas fa-compact-disc"></i>Album</a></li>
-        <li><a href="#"><i class="fas fa-user"></i>Cantante</a></li>
-        <li><a href="#"><i class="fas fa-fire"></i>Genero</a></li>
-        <li><a href="#"><i class="fas fa-folder-plus"></i>Crear Playlist</a></li>
-        <li><a href="#"><i class="fas fa-download"></i>Descargar</a></li>
+        <li><a class="item-menu" href="#" data-elemento="musica"><i class="fas fa-music"></i>Musica</a></li>
+        <li><a class="item-menu" href="#" data-elemento="album"><i class="fas fa-compact-disc"></i>Album</a></li>
+        <li><a class="item-menu" href="#" data-elemento="cantante"><i class="fas fa-user"></i>Cantante</a></li>
+        <li><a class="item-menu" href="#" data-elemento="genero"><i class="fas fa-fire"></i>Genero</a></li>
+        <li><a class="item-menu" href="#" data-elemento="playlist"><i class="fas fa-folder-plus"></i>Playlist</a></li>
+        
         
         </ul>
+      </nav>
+      </header>
       </div>
-
-
+      <section></section>
+      <div id="contenedor">
+        <div id="musica" class="pagina">
+            <h1>El inicio de la aplicación</h1>
+            <div class="cancion"></div>
+        </div>
+        <div id="album" class="pagina esconder">
+            <h1>Las canciones que el usuario tiene guardado en su computadora</h1>
+        </div>
+        <div id="cantante" class="pagina esconder">
+            <h1>Configuración de la aplicación</h1>
+            
+        </div>
+        <div id="genero" class="pagina esconder">
+          <h1>Configuración de la aplicación</h1>
+      </div>
+      <div id="playlist" class="pagina esconder">
+        <h1>Configuración de la aplicación</h1>
+        
+      </div>
     </div>
+        <div class="get-started">
 
-    <!-- You can also require other files to run in this process -->
-    <script src="./renderer.js"></script>
+          <a href="#" id="get-started-close">
+            <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNHB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNCAxNCIgd2lkdGg9IjE0cHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48dGl0bGUvPjxkZXNjLz48ZGVmcy8+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSI+PGcgZmlsbD0iI0ZGRkZGRiIgaWQ9IkNvcmUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zNDEuMDAwMDAwLCAtODkuMDAwMDAwKSI+PGcgaWQ9ImNsb3NlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNDEuMDAwMDAwLCA4OS4wMDAwMDApIj48cGF0aCBkPSJNMTQsMS40IEwxMi42LDAgTDcsNS42IEwxLjQsMCBMMCwxLjQgTDUuNiw3IEwwLDEyLjYgTDEuNCwxNCBMNyw4LjQgTDEyLjYsMTQgTDE0LDEyLjYgTDguNCw3IEwxNCwxLjQgWiIgaWQ9IlNoYXBlIi8+PC9nPjwvZz48L2c+PC9zdmc+" height="18" width="18">
+          </a>
+        
+          <div class="get-started-container">
+            <div class="row no-margin">
+        
+              <div class="col-md-3">
+                <img src="" id="background" />
+                <audio src="" id="song"></audio>
+            
+                <div class="container"> 
+                    <div class="cuadro"></div> 
+                    <div class="box"></div>      
+                    <img src="./assets/icons/unknown.jpeg" id="thumbnail" />
+                    
+                    <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" />
+                    <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" />
+                    <img src="./assets/icons/backward.png" onclick="previousSong()" id="previous-song" />
+            
+                    <div class="song-artist"></div>
+                    <div class="song-title"></div>
+            
+                    <!-- Input element for progress bar - min=0 starting value of every song - max length will change per song so leave empty -->
+                    
+                    <input 
+                        type="range" 
+                        id="progress-bar" 
+                        min="0" 
+                        max="" 
+                        value="0" 
+                        onchange="changeProgressBar()"
+                    />
+            
+                    <div class="currentTime"></div>
+                    <div class="durationTime"></div>
+                </div>
+            
+                <script src="player.js"></script>
+              </div>
+        
+            </div>
+          </div>
+        </div>
+        <div>
+          <input 
+                        type="range" 
+                        id="bar" 
+                        min="0" 
+                        max="" 
+                        value="0" 
+                        onchange="changeProgressBar()"
+                    />
+                    <div class="cTime"></div>
+                    <div class="dTime"></div>
+        </div>
+        
+        <nav>
+          <a href="#" class="no-padding-right get-stated-show" id="get-started-btn">
+          </a>
+          <menu>
+            <li><a href="#"><i class="fas fa-volume-up"></i></a></li>
+            <li><a href="#"><i class="fas fa-volume-mute"></i></a></li>
+            <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
+            <li><a href="#"><i class="fas fa-angle-left"></i></a></li>
+            <li><a href="#"><i class="fas fa-play"></i></a></li>
+            <li><a href="#"><i class="fas fa-angle-right"></i></a></li>
+            <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
+            <li><a href="#"><i class="fas fa-stop"></i></a></li>
+        </menu>
+          
+        </nav>
+      
   </body>
-  
+  <!-- You can also require other files to run in this process -->
+  <script src="./renderer.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+  <script>
+    $(function(){
+      $(".navigation_icon").click(function(){
+        $(".navigation").toggleClass("navigation-open");
+
+      });
+    });
+
+    $(document).ready(function() {
+        $('#get-started-btn, #get-started-close').click(function () {
+          $('.get-started').slideToggle();
+        });
+    });
+    </script>
+
 </html>
