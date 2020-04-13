@@ -6,31 +6,39 @@
     <link rel="stylesheet" href="./main.css" type="text/css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
-  <body>
+  <body onload="cargar()">
 
 <div class="side-bar">
 
   <ul class="navigation_ul">
-    <li><a href="#"><i class="fas fa-music"></i>Lista Canciones</a></li>
-    <li><a href="#"><i class="fas fa-compact-disc"></i>Album</a></li>
-    <li><a href="#"><i class="fas fa-user"></i>Cantante</a></li>
-    <li><a href="#"><i class="fas fa-fire"></i>Genero</a></li>
-    <li><a href="#"><i class="fas fa-folder-plus"></i>Playlist</a></li>
-  </ul>
+    <li><a class="item-menu" href="#" data-elemento="musica"><i class="fas fa-music"></i>Musica</a></li>
+    <li><a class="item-menu" href="#" data-elemento="album"><i class="fas fa-compact-disc"></i>Album</a></li>
+    <li><a class="item-menu" href="#" data-elemento="cantante"><i class="fas fa-user"></i>Cantante</a></li>
+    <li><a class="item-menu" href="#" data-elemento="genero"><i class="fas fa-fire"></i>Genero</a></li>
+    <li><a class="item-menu" href="#" data-elemento="playlist"><i class="fas fa-folder-plus"></i>Playlist</a></li>
+    </ul>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<script>
-  $(function () {
-    $(".navigation_icon").click(function () {
-      $(".navigation").toggleClass("navigation-open");
-
-    });
-
-  });
-
-</script>
-
+<div id="contenedor">
+  <div id="musica" class="pagina">
+      <h1>El inicio de la aplicación</h1>
+      <div class="cancion"></div>
+  </div>
+  <div id="album" class="pagina esconder">
+      <h1>Las canciones que el usuario tiene guardado en su computadora</h1>
+  </div>
+  <div id="cantante" class="pagina esconder">
+      <h1>Configuración de la aplicación</h1>
+      
+  </div>
+  <div id="genero" class="pagina esconder">
+    <h1>Configuración de la aplicación</h1>
+  </div>
+  <div id="playlist" class="pagina esconder">
+  <h1>Configuración de la aplicación</h1>
+  
+  </div>
+</div>
 
         <div class="Down-Bar">
 
@@ -42,20 +50,20 @@
             <div class="row no-margin">
         
               <div class="col-md-3">
-                <img src="./assets/images/igonorantes.jpg" id="background" />
-                <audio src="./assets/music/Ignorantes - Bad Bunny x Sech (Letra) (MUSICAQ).mp3" id="song"></audio>
+                <img src="" id="background" />
+                <audio src="" id="song"></audio>
             
                 <div class="container"> 
                     <div class="cuadro"></div> 
                     <div class="box"></div>      
-                    <img src="./assets/images/igonorantes.jpg" id="thumbnail" />
+                    <img src="" id="thumbnail" />
                     
                     <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" />
                     <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" />
                     <img src="./assets/icons/backward.png" onclick="previousSong()" id="previous-song" />
             
-                    <div class="song-artist">Bad Bunny</div>
-                    <div class="song-title">Ignorantes</div>
+                    <div class="song-artist"></div>
+                    <div class="song-title"></div>
             
                     <!-- Input element for progress bar - min=0 starting value of every song - max length will change per song so leave empty -->
                     
@@ -106,6 +114,7 @@
   </body>
   <!-- You can also require other files to run in this process -->
   <script src="./renderer.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
   <script>
     $(document).ready(function() {
@@ -114,6 +123,12 @@
               $('.Down-Bar').slideToggle();
         });
     
+    });
+    $(function () {
+      $(".navigation_icon").click(function () {
+        $(".navigation").toggleClass("navigation-open");
+    });
+
     });
     </script>
 
