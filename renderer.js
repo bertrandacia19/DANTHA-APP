@@ -16,9 +16,9 @@ let html = "";
 for (let i = 0; i < enlaces.length; i++) {
     enlaces[i].addEventListener('click', function(e) {
         cargar()
+        cargar_cancion()
         e.preventDefault();
         const idElemento = e.currentTarget.getAttribute('data-elemento');
-        console.log(idElemento);
         const paginas = document.getElementsByClassName('pagina');
         for (let j = 0; j < paginas.length; j++) {
             paginas[j].classList.add('esconder')
@@ -75,11 +75,10 @@ Fs.readdir(directoryPath, function (err, files) {
 
 function cargar() {
     for (var i = 0; i < songTitles.length; i++){
-        console.log(songTitles)
         html += "<div class=cancion>";
         html += "<img src="+thumbnails[i]+">";
-        html += "<h2>"+songTitles[i]+"</h2>";
-        html += "<h3>"+songArtists[i]+"</h3>";
+        html += "<h2 class= titulo>"+songTitles[i]+"</h2>";
+        html += "<h3 class= art>"+songArtists[i]+"</h3>";
         html += "</div>";
     }
     cancion.innerHTML = html;
@@ -134,10 +133,8 @@ function previousSong() {
     song.src = songs[songIndex];
     thumbnail.src = thumbnails[songIndex];
     background.src = thumbnails[songIndex];
-
     songArtist.innerHTML = songArtists[songIndex];
     songTitle.innerHTML = songTitles[songIndex];
-
     playing = true;
     playPause();
 }
@@ -172,11 +169,24 @@ function changeProgressBar() {
     song.currentTime = progressBar.value;
 };
 
-const canciones = document.getElementsByClassName('cancion');
-/*for (let i = 0; i < canciones.length; i++) {
-    canciones[i].addEventListener('click', function(e) {
-        e.preventDefault();
-        var a = songs.indexOf()
-    })
+const barra = document.getElementsByClassName('Down-Bar')
+function cargar_cancion(){
+    const canciones = document.getElementsByClassName('cancion');
+    const titulo = document.getElementsByClassName('titulo');
+    for (let i = 0; i < canciones.length; i++) {
+        canciones[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            barra[0].setAttribute("style", "display: block;");
+            var a = songTitles.indexOf(titulo[i].textContent)
+            console.log(a)
+            song.src = songs[a];
+            thumbnail.src = thumbnails[a];
+            background.src = thumbnails[a];
+            songArtist.innerHTML = songArtists[a];
+            songTitle.innerHTML = songTitles[a];
+            playing = true;
+            playPause();
+        })
+    }
+    
 }
-*/
