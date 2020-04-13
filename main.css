@@ -1,130 +1,95 @@
-html{
-  box-sizing: border-box;
+body, html{
+  margin: 0%;
+   /* height: 0vh;
+    padding: 0vh;*/  
 }
-.esconder {
-    display: none;
-}
-
-
 
 body{
+  background:#000;
   font-family: tahoma;
-    padding: 0;
-    margin: 0;
-    background: rgb(37, 37, 37);
+  padding: 0;
+  margin: 0;
+  background: #0a0909;
 }
-*,*:before,
-*:after{
-    box-sizing: inherit;
-    padding: 0;
-    margin: 0;
-}
+
 img{
     padding: 0px;
-    width: 100%;
-    height:200px;
+    width: 50px;
+    height:50px;
     align-items: center;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
     bottom: 20px;
 }
 
-#musica{
-  display: flex;
-  flex-direction: row;
+/* MENU */
+html{
+  box-sizing: border-box;
 }
 
-.contenedor {
-    height: 100px;
-    background-color: #FFF;
-    box-shadow: 0 1px 5px #000;
-    display: flex;
-    margin-top: 0;
-    justify-content: space-around;
-    align-items: center;
-}
-.contenedor a {
-    text-decoration: none;
-    color: #000;
-}
-.esconder {
-    display: none;
+
+*,*:before,
+*:after{
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
 }
 
-*{
-    margin: 0px;
-    padding: 0px;
-    list-style: none;
-    text-decoration: none;
-    font-family: sans-serif;
-}
-h1{
-  color: #fff;
-}
-
-.sidebar{
-  position: fixed;
-  width: 22%;
+.side-bar{
+  width:255px;
   height: 100%;
-  background: #042331;
-}
+  display: block;
+  position: absolute;
+  background: #021720;
+  transition: all .5s ease;
+  text-align: center;
+  line-height: 100px;
+  font-size: 20px;
+  padding-top: 4.5%;
 
-.sidebar header{
-   font-size: 100spx;
-   color: white;
-   text-align: center;
-   line-height: 70px;
-   background: #063146;
-   user-select: none;
-   align-items: center;
-}
-
-a{
-   text-align: center;
-   color: green;
-   text-size-adjust: 30% ;
-   padding: 0%;
-}
-
-ul.navigation_ul a{
-   display: block;
-   height: 30%;
-   width: 100%;
-   align-items: center;
-   line-height: 50px;
-   font-size: 20px;
-   color: white;
-   padding-left: 30px;
-   box-sizing: border-box;
-   border-top: 1px solid rgba(255,255,255,.1);
-   border-bottom: 1px solid black;
-   transition: .4s;
 }
 
 
-.sidebar ul a i{
-   margin-right: 0px;
-   width: 30px;
-   height: 40px;
+ul li:hover a{
+  padding-left: 30px;
+  /*font-size: 10px;*/
+  
 }
-   
+/* color icons */
+.side-bar ul a i{
+  margin-right: 16px;
+  font-size: 20px;
+  color: #d6e0e6;
+  
+}
+/* color letras */
+.side-bar .navigation_ul a{
+  text-align: center;
+  text-transform: uppercase;
+  color: #c0d1db;
+}
+/* color hover */
+.side-bar .navigation_ul a:hover{
+  color: #283593;/*#ff5bff; #c67c00;*/
+}
+
+
+
 
 menu {
   padding: 0;
   margin: 0;
   width: 80%;
   height: 50px;
-  background-color: #032535;
+  background-color: #031822;
   display: flex;
   position: fixed;
-  bottom: 0.8%;
+  bottom: 0.4%;
   left: 18%;
   right: 0;
   margin-top: 0;
   margin: 0px;
   justify-content: space-around;
   align-items: center;
- z-index: 9;
+  z-index: 9;
 
 }
 menu a {
@@ -146,54 +111,47 @@ z-index: 10;
 
 }
 
-/* style for the progress bar */
-div #bar {
-  -webkit-appearance: none;
-  appearance: none;
+/* style for play and pause images */
+menu #play-pause {
   position: absolute;
+  height: 46px;
+  width: 46px;
+  filter: invert(1);
+  cursor: pointer;
+  bottom: 1.6%;
   z-index: 4;
-  height: 5px;
-  background: #000000;
-  width: 100%;
-  bottom: 8%;
-  border-radius: 30px;
-  left: 0%;
+  font-size: 53px;
+  left: 38.5%;
 }
 
-/* style for the progress bar's slider thumb */
-div #bar::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  margin-top: -3px;
-  margin-left: 0px;
-  height: 10px;
-  width: 7px;
-  border: 0;
-  background: -webkit-linear-gradient(45deg,  rgb(213, 213, 213), rgb(193, 255, 6));
-  border-radius: 30px;
+/* style for next and previous song images */
+menu #next-song{
+  position: absolute;
+  height: 44px;
+  width: 44px;
+  filter: invert(1);
   cursor: pointer;
+  bottom: 2.5%;
+  font-size: 40px;
+  z-index: 4;
+  left: 54%;
 }
 
-/* style for the progress bar's runnable track */
-div #bar::-webkit-slider-runnable-track {
-  -webkit-appearance: none;
-  appearance: none;
+menu #previous-song{
+  position: absolute;
+  height: 44px;
+  width: 44px;
+  filter: invert(1);
   cursor: pointer;
-  max-height: 5px;
-  border-radius: 30px;
+  bottom: 2.5%;
+  font-size: 40px;
+  z-index: 4;
+  left: 24%;
 }
 
-.cancion {
-  border-radius:16px;
-   background-color:rgb(71, 66, 66);
-   left: 23%;
-   width: 250px;
-   height: 320px;
-   padding: 0px;
-   margin: 5px; 
-}
 
-body{background:#000;}
-.get-started {
+
+.Down-Bar {
   width: 100%;
   height: 100%;
   background: #042331;
@@ -207,60 +165,52 @@ body{background:#000;}
 }
 
 #get-started-btn {
-    font: 100 14px/20px 'Open Sans', Verdana, sans-serif;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #fff;
-    background: #032535;
-    position: absolute;
-    right: 0;
-    bottom: 19px;
-    padding: 25px ;
-    border:#FFF 0px solid;
-    display: flex;
-     height: 1%;
-      bottom: 0;
-      left: 0%;
-      right: 0;
-      margin-top: 0;
-      margin: 0px;
-      justify-content: space-around;
-      align-items: center;
-      filter: blur(-1px)
-  }
-  
-  #get-started-btn:hover,
-  #get-started-btn:active {
-    text-decoration: none;
-      -webkit-box-shadow: -3px 0px 25px 4px #042331;
-    -moz-box-shadow: -3px 0px 25px 4px #042331;
-    box-shadow: -3px 0px 25px 4px #042331;
-    transition: box-shadow 20s ease-in-out;
-    -moz-transition: box-shadow 20s ease-in-out;
-      -webkit-transition: box-shadow 20s ease-in-out;
-      -o-transition: box-shadow 20s ease-in-out;
-      -ms-transition:box-shadow 20s ease-in-out;
+  width: 200%;
+  text-transform: uppercase;
+  color: #fff;
+  background: #031822;
+  position: absolute;
+  right: 0;
+  bottom: 19px;
+  padding: 25px ;
+  border:#FFF 0px solid;
+  display: flex;
+  position: fixed;
+  bottom: 0.4%;
+  right: 0;
+  margin-top: 0;
+  margin: 0px;
+  justify-content: space-around;
+  align-items: center;
+  height: 8.5%;
+  bottom: 0;
+  margin-top: 0;
+  margin: 0px;
+  justify-content: space-around;
+  align-items: center;
+  filter: blur(-1px)
       
   }
+
   
   #get-started-btn:focus {
     text-decoration: none;
   }
   
-  #get-started-close {
+  #close {
     position: absolute;
     right: 4%;
     top: 15px;
     width: 2%;
     height: 2%;
-    font-size: -1;
+    font-size: 0%;
     opacity: 15%;
     z-index: 99;
   }
   
-  #get-started-close:hover,
-  #get-started-close:active,
-  #get-started-close:focus {
+  #close:hover,
+  #close:active,
+  #close:focus {
     opacity: 30%
   }
   
@@ -293,12 +243,12 @@ body{background:#000;}
   .white-link-sm:hover,
   .white-link-sm:active,
   .white-link-sm:focus {
-    color: #fff;
+    color: rgb(19, 100, 121);
     font-weight: 600;
   }
   
-  .get-stated-hide {
-    display: block;
+  .Down-Bar-hide {
+    display: table-header-group;
   }
   
   ul {
@@ -317,10 +267,10 @@ body{background:#000;}
   }
   
   @media (max-width: 991px) {
-    .get-started-heading.first {
+    .Down-Bar-heading.first {
       margin-top: 15px;
     }
-    .get-started-heading {
+    .Down-Bar-heading {
       margin-top: 30px;
     }
   }
@@ -367,11 +317,11 @@ body{background:#000;}
   opacity: 60%;
 }
 
-/* album cover */
+/* Song Image */
 #thumbnail {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 103%;
+  height: 108%;
   top: -8%;
   transition: 1s;
   z-index: 3;
@@ -422,7 +372,7 @@ body{background:#000;}
   width: 50px;
   filter: invert(1);
   cursor: pointer;
-  bottom: 1.7%;
+  bottom: 2.5%;
   font-size: 40px;
   z-index: 4;
   left: 62%;
@@ -434,7 +384,7 @@ body{background:#000;}
   width: 50px;
   filter: invert(1);
   cursor: pointer;
-  bottom: 1.7%;
+  bottom: 2.5%;
   font-size: 40px;
   z-index: 4;
   left: 32%;
@@ -456,11 +406,43 @@ body{background:#000;}
   align-items: center;
 }
 
+
 /* style for the total length of the track */
 .durationTime {
   position: absolute;
   height: 50px;
   width: 50px;
+  cursor: pointer;
+  bottom: 4%;
+  right: 4%;
+  z-index: 4;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  align-items: center;
+  color: rgb(193, 255, 6);
+}
+
+/* style for current time of the track */
+nav .currentTime {
+  position: absolute;
+  height: 72px;
+  width: 50px;
+  cursor: pointer;
+  bottom: 0%;
+  left: 5%;
+  z-index: 4;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: white;
+  align-items: center;
+}
+
+
+/* style for the total length of the track */
+nav .durationTime {
+  position: absolute;
+  height: 50%;
+  width: 50%;
   cursor: pointer;
   bottom: 4%;
   right: 4%;
@@ -479,14 +461,39 @@ body{background:#000;}
   z-index: 4;
   height: 5px;
   background: #000000;
-  width: 100%;
+  width: 870.8pt;
   bottom: 14%;
+  border-radius: 30px;
+  left: 0%;
+}
+
+#bar {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  position: absolute;
+  z-index: 4;
+  height: 5px;
+  background: #000000;
+  bottom: 8%;
   border-radius: 30px;
   left: 0%;
 }
 
 /* style for the progress bar's slider thumb */
 #progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -3px;
+  margin-left: 0px;
+  height: 10px;
+  width: 7px;
+  border: 0;
+  background: -webkit-linear-gradient(45deg,  rgb(213, 213, 213), rgb(193, 255, 6));
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#bar::-webkit-slider-thumb {
   -webkit-appearance: none;
   margin-top: -3px;
   margin-left: 0px;
@@ -507,8 +514,20 @@ body{background:#000;}
   border-radius: 30px;
 }
 
+#bar::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  max-height: 5px;
+  border-radius: 30px;
+}
+
 /* style to remove blue shade of the progress bar when clicked on/selected */
 #progress-bar:focus {
+  outline: none;
+}
+
+#bar:focus {
   outline: none;
 }
  #background {
@@ -523,143 +542,5 @@ body{background:#000;}
     filter: blur(5px);
     z-index: -1;
 }
-.col-md-3 {
-  background: #000000;
-  z-index: -2;
-}
 
-.col-md-3{
-  width: 50%;
-}
-
-.navigation{
-  width:100px;
-  height: 100%;
-  display: block;
-  padding-right: 40px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: whitesmoke;
-  border-radius: 0% 50% 350% 0%;
-  perspective: 800;
-  transition: all 800ms cubic-bezier(.9,0,.33,1);
-}
-
-.navigation_icon{
-  width: 55px;
-  height: 44px;
-  display: block;
-  position: relative;
-  top: 22%;
-  left: 35%;
-  background: hsla(312, 32%, 66%, 0.6);
-  cursor: pointer;
-  transition: all 800ms cubic-bezier(.9,0,.33,1);
-
-}
-
-.navigation_icon .topbar{
-  width: 55px;
-  height: 2px;
-  display: block;
-  background: #fc0363;
-  position: absolute;
-  top: 10px;
-  transform: rotate(0);
-  transition: all 800ms cubic-bezier(.9,0,.33,1);
-}
-
-.navigation_icon .middlebar{
-  width: 55px;
-  height: 3px;
-  display: block;
-  background: #fc0363;
-  position: absolute;
-  top: 20px;
-  transform: rotate(0);
-  transition: all 800ms cubic-bezier(.9,0,.33,1);
-}
-
-.navigation_icon .bottombar{
-  width: 35px;
-  height: 3px;
-  display: block;
-  background: #fc0363;
-  position: absolute;
-  top: 30px;
-  transform: rotate(0);
-  transition: all 800ms cubic-bezier(.9,0,.33,1);
-}
-
-.navigation .navigation_ul{
-  float: right;
-  margin-top: 220px; 
-  opacity: 0;
-  visibility: hidden;
-  transform: rotateY(-90deg) translateX(-300px);
-  transition: all 800ms cubic-bezier(.9,0,.33,1);
-}
-
-.navigation .navigation_ul li{
-  list-style: none;
-  text-align: center;
-}
-
-.navigation .navigation_ul a{
-  display: block;
-  font-size: 30px;
-  font-weight: 800;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: black;
-  margin-bottom: 15px;
-}
-
-.navigation .navigation_ul a:hover{
-  /*color: hsl(185, 96%, 33%);*/
- color: #8D87FF;
- 
-}
-
-.navigation-open{
-  width: 350px;
-  height: 100%;
-  display: block;
-  background: whitesmoke;
-  position: absolute;
-  left: 0;
-  border-radius: 0% 1% 1% 0%;
-}
-
-.navigation-open .navigation_icon{
-  left: 80%;
-}
-
-.navigation-open .navigation_ul{
-  opacity: 1;
-  visibility: visible;
-}
-
-.navigation-open .topbar{
-  top: 21px;
-  transform: rotate(45deg);
-}
-.navigation-open .middlebar{
-  width: 0;
-  top: 22px;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateX(30px);
-}
-.navigation-open .bottombar{
-  width: 55;
-  top: 21px;
-  transform: rotate(-45deg);
-}
-
-.navigation-open .navigation_ul{
-  transform: rotateY(0) translateX(0);
-
-}
 
