@@ -15,8 +15,6 @@ let html = "";
 
 for (let i = 0; i < enlaces.length; i++) {
     enlaces[i].addEventListener('click', function(e) {
-        cargar()
-        cargar_cancion()
         e.preventDefault();
         const idElemento = e.currentTarget.getAttribute('data-elemento');
         const paginas = document.getElementsByClassName('pagina');
@@ -71,17 +69,20 @@ Fs.readdir(directoryPath, function (err, files) {
       }
     });
   });
+  cargar()
+  cargar_cancion()
 });
 
 function cargar() {
     for (var i = 0; i < songTitles.length; i++){
-        html += "<div class=cancion>";
+        html += "<div class=cancion onclick=cargar_cancion()>";
         html += "<img src="+thumbnails[i]+">";
         html += "<h2 class= titulo>"+songTitles[i]+"</h2>";
         html += "<h3 class= art>"+songArtists[i]+"</h3>";
         html += "</div>";
     }
     cancion.innerHTML = html;
+    cargar_cancion()
 }
 
 let playing = true;
