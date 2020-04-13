@@ -63,7 +63,7 @@ Fs.readdir(directoryPath, function (err, files) {
                     window.btoa(base64String);
                     thumbnails.push(`${base64}`);
           }else{
-            thumbnails.push(`./assets/icons/unknown.jpeg`)
+            thumbnails.push(`./assets/images/unknown.jpeg`)
           }
       },
       onError: function(error) {
@@ -127,7 +127,6 @@ function nextSong() {
 
 // function where songIndex is decremented, song/thumbnail image/background image/song artist/song title changes to previous index value, and playPause() runs to play previous track 
 function previousSong() {
-    console.log(songIndex)
     songIndex--;
     if (songIndex < 1) {
         songIndex = archivos;
@@ -172,3 +171,12 @@ setInterval(updateProgressValue, 500);
 function changeProgressBar() {
     song.currentTime = progressBar.value;
 };
+
+const canciones = document.getElementsByClassName('cancion');
+/*for (let i = 0; i < canciones.length; i++) {
+    canciones[i].addEventListener('click', function(e) {
+        e.preventDefault();
+        var a = songs.indexOf()
+    })
+}
+*/
