@@ -24,7 +24,7 @@ body{
   font-family: tahoma;
   padding: 0;
   margin: 0;
-  background: #0a0909;
+  background: white;
 }
 
 img{
@@ -57,7 +57,7 @@ html{
 }
 
 
-*,:before,
+*,*:before,
 *:after{
   box-sizing: inherit;
   padding: 0;
@@ -69,7 +69,7 @@ html{
   height: 100%;
   display: block;
   position: absolute;
-  background: #021720;
+  background: #021720; 
   transition: all .5s ease;
   text-align: center;
   line-height: 100px;
@@ -81,7 +81,7 @@ html{
 
 ul li:hover a{
   padding-left: 30px;
-  /font-size: 10px;/
+  font-size: 10px;
   
 }
 /* color icons */
@@ -99,7 +99,7 @@ ul li:hover a{
 }
 /* color hover */
 .side-bar .navigation_ul a:hover{
-  color: #283593;/#ff5bff; #c67c00;/
+  color: #283593;
 }
 
 #contenedor{

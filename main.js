@@ -11,6 +11,8 @@ function createWindow () {
       nodeIntegration: true
     }
   })
+
+  /* fullscreen: true, */
 /*function createWindow () {
   // Create the browser window.
   win= new BrowserWindow({show: false});
