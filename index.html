@@ -21,11 +21,10 @@
 
 <div id="contenedor">
   <div id="musica" class="pagina">
-      <h1>El inicio de la aplicación</h1>
-      <div class="cancion"></div>
   </div>
   <div id="album" class="pagina esconder">
       <h1>Las canciones que el usuario tiene guardado en su computadora</h1>
+      <div class="cancion"></div>
   </div>
   <div id="cantante" class="pagina esconder">
       <h1>Configuración de la aplicación</h1>
@@ -88,7 +87,13 @@
         </div>
         <div>
         <nav>
-          <a href="#" class="no-padding-right get-stated-show" id="get-started-btn">
+          <a href="#" class="no-padding-right get-stated-show" id="get-started-btn" name="get-started-btn">
+            <menu for="get-started-btn">
+              <img class="thumbnail muestra" >
+              <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" class="muestra"/>
+              <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" class="muestra"/>
+              <img src="./assets/icons/backward.png" onclick="previousSong()" id="previous-song" class="muestra"/>  
+            </menu>
           </a>
           <input 
                         type="range" 
@@ -101,11 +106,6 @@
                     <div class="currentTime"></div>
                     <div class="durationTime"></div>  
                     
-          <menu>
-            <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" />
-            <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" />
-            <img src="./assets/icons/backward.png" onclick="previousSong()" id="previous-song" />  
-        </menu>
           
         </nav>
       
@@ -120,10 +120,8 @@
         $('.Down-Bar').slideToggle();
       });
     });
-    $(function () {
-      $(".navigation_icon").click(function () {
-        $(".navigation").toggleClass("navigation-open");
-      });
+    $(".muestra").on("click", function(event){
+      event.stopPropagation();
     });
     </script>
 
