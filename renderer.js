@@ -10,8 +10,9 @@ const progressBar = document.querySelector('#progress-bar'); // element where pr
 const navprogressBar = document.querySelector('nav #progress-bar')
 const enlaces = document.getElementsByClassName('item-menu');
 var archivos = 0;
-const cancion = document.getElementById('musica');
+const cancion = document.getElementById('Alitas0101');
 let html = "";
+const album = document.getElementById('album');
 
 for (let i = 0; i < enlaces.length; i++) {
     enlaces[i].addEventListener('click', function(e) {
@@ -20,11 +21,20 @@ for (let i = 0; i < enlaces.length; i++) {
         const idElemento = e.currentTarget.getAttribute('data-elemento');
         console.log(idElemento);
         const paginas = document.getElementsByClassName('pagina');
+        const canciones = document.getElementsByClassName('cancion');
         for (let j = 0; j < paginas.length; j++) {
             paginas[j].classList.add('esconder')
+            for (let j = 0; j < canciones.length; j++) {
+                canciones[j].classList.add('esconder')
+            }
         }
         document.getElementById(idElemento).classList.remove('esconder');
-    })
+        if(idElemento === "musica"){
+            for (let j = 0; j < canciones.length; j++) {
+                canciones[j].classList.remove('esconder')
+            }
+        }
+    })        
 }
 
 let pPause = document.querySelector('#play-pause'); // element where play and pause image appears
@@ -71,19 +81,26 @@ Fs.readdir(directoryPath, function (err, files) {
       }
     });
   });
+  
+  cargar_cancion()
 });
 
 function cargar() {
     for (var i = 0; i < songTitles.length; i++){
-        console.log(songTitles)
-        html += "<div class=cancion>";
+        html += "<div class=swiper-slide>";
+        html += "<div class=imgBx id=SanBenito onclick=cargar_cancion()>";
         html += "<img src="+thumbnails[i]+">";
-        html += "<h2>"+songTitles[i]+"</h2>";
-        html += "<h3>"+songArtists[i]+"</h3>";
+        html += "<h2 class= titulo>"+songTitles[i]+"</h2>";
+        html += "<h3 class= art>"+songArtists[i]+"</h3>";
         html += "</div>";
+        html += "</div>";
+        console.log(html)
+        
     }
     cancion.innerHTML = html;
+    cargar_cancion()
 }
+
 
 let playing = true;
 function playPause() {
@@ -134,10 +151,8 @@ function previousSong() {
     song.src = songs[songIndex];
     thumbnail.src = thumbnails[songIndex];
     background.src = thumbnails[songIndex];
-
     songArtist.innerHTML = songArtists[songIndex];
     songTitle.innerHTML = songTitles[songIndex];
-
     playing = true;
     playPause();
 }
@@ -172,11 +187,43 @@ function changeProgressBar() {
     song.currentTime = progressBar.value;
 };
 
-const canciones = document.getElementsByClassName('cancion');
-/*for (let i = 0; i < canciones.length; i++) {
-    canciones[i].addEventListener('click', function(e) {
-        e.preventDefault();
-        var a = songs.indexOf()
-    })
+const barra = document.getElementsByClassName('Down-Bar')
+function cargar_cancion(){
+    const canciones = document.getElementsByClassName('imgBx');
+    const titulo = document.getElementsByClassName('titulo');
+    for (let i = 0; i < canciones.length; i++) {
+        canciones[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            barra[0].setAttribute("style", "display: block;");
+            var a = songTitles.indexOf(titulo[i].textContent)
+            console.log(a)
+            song.src = songs[a];
+            thumbnail.src = thumbnails[a];
+            background.src = thumbnails[a];
+            songArtist.innerHTML = songArtists[a];
+            songTitle.innerHTML = songTitles[a];
+            playing = true;
+            playPause();
+        })
+    }
+    
 }
-*/
+
+/* $(window).resize(function(){
+    $(window).height();
+    $(window).width();
+}); */
+
+
+/* var content = document.getElementById('contenedor')
+    content.style.display="none"
+    setTimeout(function(){
+      content.style.display="block"
+    }, 5000) */
+
+
+    window.onresize = doALoadOfStuff;
+
+    function doALoadOfStuff() {
+        //do a load of stuff
+    }

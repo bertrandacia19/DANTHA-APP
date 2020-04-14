@@ -37,6 +37,15 @@ img{
   bottom: 20px;
 }
 
+img.thumbnail{
+  padding: 0px;
+  width: 20px;
+  position: absolute;
+  height: 45px;
+  z-index: 4;
+  align-self: left;
+}
+
 #musica{
   display: flex;
   flex-direction: row;
@@ -48,7 +57,7 @@ html{
 }
 
 
-*,*:before,
+*,:before,
 *:after{
   box-sizing: inherit;
   padding: 0;
@@ -56,7 +65,7 @@ html{
 }
 
 .side-bar{
-  width:255px;
+  width:20%;
   height: 100%;
   display: block;
   position: absolute;
@@ -72,7 +81,7 @@ html{
 
 ul li:hover a{
   padding-left: 30px;
-  /*font-size: 10px;*/
+  /font-size: 10px;/
   
 }
 /* color icons */
@@ -90,22 +99,26 @@ ul li:hover a{
 }
 /* color hover */
 .side-bar .navigation_ul a:hover{
-  color: #283593;/*#ff5bff; #c67c00;*/
+  color: #283593;/#ff5bff; #c67c00;/
 }
 
-
-
+#contenedor{
+  height: 100%;
+  width: 80%;
+  position: relative;
+  float: right;
+}
 
 menu {
   padding: 0;
   margin: 0;
-  width: 80%;
+  width: 100%;
   height: 50px;
   background-color: #031822;
   display: flex;
   position: fixed;
   bottom: 0.4%;
-  left: 18%;
+  left: 0%;
   right: 0;
   margin-top: 0;
   margin: 0px;
@@ -564,5 +577,3 @@ nav .durationTime {
     filter: blur(5px);
     z-index: -1;
 }
-
-

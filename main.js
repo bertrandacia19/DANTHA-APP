@@ -11,7 +11,15 @@ function createWindow () {
       nodeIntegration: true
     }
   })
-
+/*function createWindow () {
+  // Create the browser window.
+  win= new BrowserWindow({show: false});
+  win.maximize();
+  win.show();
+     
+    }
+  
+ */
   // and load the index.html of the app.
   mainWindow.loadFile('index.html')
 
