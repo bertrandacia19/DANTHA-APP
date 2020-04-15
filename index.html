@@ -1,136 +1,183 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
 
-    <title>Dantha Player Music</title>
-    <link rel="stylesheet" href="./main.css" type="text/css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    
-    
+<head>
+  <meta charset="UTF-8">
+  <title>Dantha Player Music</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, 
+    minimum-scale=1, maximum-scale=1">
+  <link rel="stylesheet" type="text/css" href="swiper.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="./main.css" type="text/css">
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
-  </head>
-  <body>
 
-    <div class="wrapper">
+</head>
 
-    <input type="checkbox" id="check">
-    <input type="checkbox" id="check">
-    
+<body>
+  <img class="dark"  src="./assets/icons/dom.png" ALIGN=RIGHT  onclick="myFunction()"/>
+  <div class="side-bar">
 
-    
-      <div class="sidebar">
-        <header><img src="PicsArt_03-14-06.37.56.jpg" alt="img"></header>
-        <ul>
-        
-        <li><a class="item-menu" href="#" data-elemento="musica"><i class="fas fa-music"></i>Musica</a></li>
-        <li><a class="item-menu" href="#" data-elemento="album"><i class="fas fa-compact-disc"></i>Album</a></li>
-        <li><a class="item-menu" href="#" data-elemento="cantante"><i class="fas fa-user"></i>Cantante</a></li>
-        <li><a class="item-menu" href="#" data-elemento="genero"><i class="fas fa-fire"></i>Genero</a></li>
-        <li><a class="item-menu" href="#" data-elemento="crearplaylist"><i class="fas fa-folder-plus"></i>Crear Playlist</a></li>
-        <li><a class="item-menu" href="#" data-elemento="playlist"><i class="ffas fa-download"></i>Playlist</a></li>
-        
+    <ul class="navigation_ul">
+      <li><a class="item-menu" href="#" data-elemento="musica"><i class="fas fa-music"></i>Musica</a></li>
+      <li><a class="item-menu" href="#" data-elemento="album"><i class="fas fa-compact-disc"></i>Album</a></li>
+      <li><a class="item-menu" href="#" data-elemento="cantante"><i class="fas fa-user"></i>Cantante</a></li>
+      <li><a class="item-menu" href="#" data-elemento="genero"><i class="fas fa-fire"></i>Genero</a></li>
+      <li><a class="item-menu" href="#" data-elemento="playlist"><i class="fas fa-folder-plus"></i>Playlist</a></li>
+    </ul>
+  </div>
 
-        
-        
-        </ul>
-      </div>
-      <section></section>
-      <div id="contenedor">
-        <div id="musica" class="pagina">
+  <div id="contenedor">
+    <div id="musica" class="pagina">
+      <div class="swiper-container">
+        <div class="swiper-wrapper" id="Alitas0101">
+          <div class="swiper-slide">
+            <div class="imgBx" id="SanBenito">
 
-             <h1>Música</h1>
-             <div class="box"></div>  
-             <div class="box"></div>
-             <div class="box"></div>
-            
+            </div>
+
+          </div>
+
         </div>
-        <div id="album" class="pagina esconder">
-            <h1>Albunes</h1>
-            <div class="box"></div>  
-        </div>
-        <div id="cantante" class="pagina esconder">
-            <h1>Cantantes</h1>
-            <div class="box"></div>  
-        </div>
-        <div id="genero" class="pagina esconder">
-          <h1>Genero</h1>
-          <div class="box"></div>  
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
       </div>
-      <div id="crearplaylist" class="pagina esconder">
-        <h1>Crear playlist</h1>
-        <div class="box"></div>  
-
-        <div id="playlist" class="pagina esconder">
-          <h1>Crear playlist</h1>
-          <div class="box"></div>  
-
-        
-      </div>
-
-
-
-
-
-      
-
-        
-      </div>
-
-
 
     </div>
+
+    <div id="album" class="pagina esconder">
+      <h1>Las canciones que el usuario tiene guardado en su computadora</h1>
     </div>
- 
+  </div>
+  </div>
+  <div id="cantante" class="pagina esconder">
+    <h1>Configuración de la aplicación</h1>
+
+  </div>
+  <div id="genero" class="pagina esconder">
+    <h1>Configuración de la aplicación</h1>
+  </div>
+  <div id="playlist" class="pagina esconder">
+    <h1>Configuración de la aplicación</h1>
+
+  </div>
 
 
-    <footer id="abrir">
-      <input type="checkbox" id="check">
-      <input type="checkbox" id="check">
-      <label for="check">
-        <i class="fas fa-times" id="close"></i>
-      </label>
-  
-      
-      <menu>
 
-        <div class="cuadro" >
-          <div class="caja"></div>
-        </div>
-        <li><a href="#"><i class="fas fa-volume-up"></i></a></li>
-        <li><a href="#"><i class="fas fa-volume-mute"></i></a></li>
-        <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-        <li><a href="#"><i class="fas fa-angle-left"></i></a></li>
-        <li><a href="#"><i class="fas fa-play"></i></a></li>
-        <li><a href="#"><i class="fas fa-angle-right"></i></a></li>
-        <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
-        <li><a href="#"><i class="fas fa-stop"></i></a></li>
-        
-        
-    </menu>
-  
-    </footer>
 
-      
-    
-  </body>
-  <!-- You can also require other files to run in this process -->
-  <script src="./renderer.js"></script>
+  <!-- Swiper JS -->
+  <script type="text/javascript" src="swiper.min.js"></script>
+
+  <!-- Initialize Swiper -->
   <script>
-    const enlaces = document.getElementsByClassName('item-menu');
-    for (let i = 0; i < enlaces.length; i++) {
-        enlaces[i].addEventListener('click', function(e) {
-            e.preventDefault();
-            const idElemento = e.currentTarget.getAttribute('data-elemento');
-            console.log(idElemento);
-            const paginas = document.getElementsByClassName('pagina');
-            for (let j = 0; j < paginas.length; j++) {
-                paginas[j].classList.add('esconder')
-            }
-            document.getElementById(idElemento).classList.remove('esconder');
-            
-        })
-        
-    }
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 500,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+  </script>
+
+  <div class="Down-Bar">
+
+    <a href="#" id="close">
+      <img
+        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNHB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNCAxNCIgd2lkdGg9IjE0cHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48dGl0bGUvPjxkZXNjLz48ZGVmcy8+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSI+PGcgZmlsbD0iI0ZGRkZGRiIgaWQ9IkNvcmUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zNDEuMDAwMDAwLCAtODkuMDAwMDAwKSI+PGcgaWQ9ImNsb3NlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNDEuMDAwMDAwLCA4OS4wMDAwMDApIj48cGF0aCBkPSJNMTQsMS40IEwxMi42LDAgTDcsNS42IEwxLjQsMCBMMCwxLjQgTDUuNiw3IEwwLDEyLjYgTDEuNCwxNCBMNyw4LjQgTDEyLjYsMTQgTDE0LDEyLjYgTDguNCw3IEwxNCwxLjQgWiIgaWQ9IlNoYXBlIi8+PC9nPjwvZz48L2c+PC9zdmc+"
+        height="18" width="18">
+    </a>
+
+    <div class="get-started-container">
+      <div class="row no-margin">
+
+        <div class="col-md-3">
+          <img src="" id="background" />
+          <audio src="" id="song"></audio>
+
+          <div class="container">
+            <div class="cuadro"></div>
+            <div class="box"></div>
+            <img src="" id="thumbnail" />
+
+            <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" />
+            <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" />
+            <img src="./assets/icons/backward.png" onclick="previousSong()" id="previous-song" />
+
+            <div class="song-artist"></div>
+            <div class="song-title"></div>
+
+            <!-- Input element for progress bar - min=0 starting value of every song - max length will change per song so leave empty -->
+
+            <input type="range" id="progress-bar" min="0" max="" value="0" onchange="changeProgressBar()" />
+
+            <div class="currentTime"></div>
+            <div class="durationTime"></div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div>
+    <nav>
+      <a href="#" class="no-padding-right get-stated-show" id="get-started-btn" name="get-started-btn">
+        <menu for="get-started-btn">
+          <img class="thumbnail muestra" src="./assets/images/unknown.jpeg">
+          <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" class="muestra" />
+          <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" class="muestra" />
+          <img src="./assets/icons/backward.png" onclick="previousSong()" id="previous-song" class="muestra" />
+        </menu>
+      </a>
+      <input type="range" id="bar" min="0" max="" value="0" onchange="changeProgressBar()" />
+      <div class="currentTime"></div>
+      <div class="durationTime"></div>
+
+
+    </nav>
+
+</body>
+<!-- You can also require other files to run in this process -->
+<script src="./renderer.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+<script>
+  function myFunction() {
+     var element = document.body;
+     element.classList.toggle("dark-mode");
+  }
+  </script>
+  
+<script>
+  $(document).ready(function () {
+    $('#get-started-btn, #close').click(function () {
+      $('.Down-Bar').slideToggle();
+    });
+  });
+  $(".muestra").on("click", function (event) {
+    event.stopPropagation();
+  });
+
+  /*  document.body.onload=function(){
+      cargar()
+      window.requestFullscreen();
+  
+    }  */
+
 </script>
+
+
+
+
+
 </html>
