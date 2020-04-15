@@ -11,7 +11,17 @@ body, html{
 .cancion {
   border-radius:16px;
   cursor: pointer;
-  padding-right: 20%;
+   background-color:rgb(71, 66, 66);
+   left: 23%;
+   width: 250px;
+   height: 320px;
+   padding: 0px;
+   margin: 5px; 
+}
+
+.albumes {
+  border-radius:16px;
+  cursor: pointer;
    background-color:rgb(71, 66, 66);
    left: 23%;
    width: 250px;
@@ -28,6 +38,7 @@ body{
   background: #0a0909;
 }
 
+
 img{
   padding: 0px;
   width: 100%;
@@ -38,7 +49,24 @@ img{
   bottom: 20px;
 }
 
+menu img.thumbnail{
+  position: absolute;
+  background-color: black;
+  width: 7%;
+  height: 110%;
+  align-items: center;
+  left: 0%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  bottom: 0%;
+}
+
 #musica{
+  display: flex;
+  flex-direction: row;
+}
+
+#album{
   display: flex;
   flex-direction: row;
 }
@@ -57,7 +85,7 @@ html{
 }
 
 .side-bar{
-  width:255px;
+  width:20%;
   height: 100%;
   display: block;
   position: absolute;
@@ -94,19 +122,23 @@ ul li:hover a{
   color: #283593;/*#ff5bff; #c67c00;*/
 }
 
-
-
+#contenedor{
+  height: 100%;
+  width: 80%;
+  position: relative;
+  float: right;
+}
 
 menu {
   padding: 0;
   margin: 0;
-  width: 80%;
+  width: 100%;
   height: 50px;
   background-color: #031822;
   display: flex;
   position: fixed;
-  bottom: 0.4%;
-  left: 18%;
+  bottom: 0%;
+  left: 0%;
   right: 0;
   margin-top: 0;
   margin: 0px;

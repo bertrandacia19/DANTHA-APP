@@ -9,27 +9,47 @@ const songTitle = document.querySelector('.song-title'); // element where track 
 const progressBar = document.querySelector('#progress-bar'); // element where progress bar appears
 const navprogressBar = document.querySelector('nav #progress-bar')
 const enlaces = document.getElementsByClassName('item-menu');
+const albumes = document.getElementsByClassName('albumes');
 var archivos = 0;
 const cancion = document.getElementById('musica');
 let html = "";
+const album = document.getElementById('album');
+let html2 = "";
 
 for (let i = 0; i < enlaces.length; i++) {
     enlaces[i].addEventListener('click', function(e) {
         e.preventDefault();
         const idElemento = e.currentTarget.getAttribute('data-elemento');
         const paginas = document.getElementsByClassName('pagina');
+        const canciones = document.getElementsByClassName('cancion');
         for (let j = 0; j < paginas.length; j++) {
             paginas[j].classList.add('esconder')
+            for (let j = 0; j < canciones.length; j++) {
+                canciones[j].classList.add('esconder')
+            }
+            for (let j = 0; j < albumes.length; j++) {
+                albumes[j].classList.add('esconder')
+            }
         }
         document.getElementById(idElemento).classList.remove('esconder');
-    })
+        if(idElemento === "musica"){
+            for (let j = 0; j < canciones.length; j++) {
+                canciones[j].classList.remove('esconder')
+            }
+        }
+        if(idElemento === "album"){
+            for (let j = 0; j < albumes.length; j++) {
+                albumes[j].classList.remove('esconder')
+            }
+        }
+    })        
 }
 
 let pPause = document.querySelector('#play-pause'); // element where play and pause image appears
 songIndex = 0;
 var songs = []; // object storing paths for audio objects
-
-
+var distinct = [];
+var albums = [];
 thumbnails = []; // object storing paths for album covers and backgrounds
 
 var songArtists = []; // object storing track artists
@@ -52,6 +72,7 @@ Fs.readdir(directoryPath, function (err, files) {
         songs.push(`${directoryPath+"/"+file}`);
         songTitles.push(`${tag.tags.title ?? file}`);
         songArtists.push(`${tag.tags.artist ?? "no definido"}`);
+        albums.push(`${tag.tags.album ?? "no definido"}`);
           if (image) {
             var base64String = "";
             for (var i = 0; i < image.data.length; i++) {
@@ -69,10 +90,11 @@ Fs.readdir(directoryPath, function (err, files) {
       }
     });
   });
-  cargar()
   cargar_cancion()
 });
 
+var count = 0;
+var start = false;
 function cargar() {
     for (var i = 0; i < songTitles.length; i++){
         html += "<div class=cancion onclick=cargar_cancion()>";
@@ -82,7 +104,9 @@ function cargar() {
         html += "</div>";
     }
     cancion.innerHTML = html;
+    cargar_album();
     cargar_cancion()
+    console.log(distinct);
 }
 
 let playing = true;
@@ -105,6 +129,50 @@ function playPause() {
     }
 }
 
+function cargar_album(){
+    for(let i = 0;i<albums.length; i++){
+        for(let j = 0;j<albums.length; j++){
+            if(albums[i] === distinct[j]){
+                start = true;
+            }
+        }
+        count++; 
+        if (count == 1 && start == false) { 
+            distinct.push(albums[i]); 
+        } 
+        start = false; 
+        count = 0; 
+    }
+    console.log(html2)
+    console.log(distinct);
+    for(let j = 0;j<distinct.length; j++){
+        var cont = 0;
+        html2 += "<div class=albumes>"
+        for (let i = 0; i < songTitles.length; i++){
+            if(distinct[j] === albums[i] && cont == 0){
+                html2 += "<img src="+thumbnails[i]+">";
+                cont++
+            }
+        }
+        html2 += "<h2 class= titulo>"+distinct[j]+"</h2>";
+        for (var i = 0; i < songTitles.length; i++){
+            if(distinct[j] === albums[i]){
+                html2 += "<div class=esconder onclick=cargar_cancion()>";
+                html2 += "<img src="+thumbnails[i]+">";
+                html2 += "<h2 class= titulo>"+songTitles[i]+"</h2>";
+                html2 += "<h3 class= art>"+songArtists[i]+"</h3>";
+                html2 += "</div>";
+            }
+        }
+        html2 +="</div>"
+    }
+    album.innerHTML = html2;
+    for (let j = 0; j < albumes.length; j++) {
+        albumes[j].classList.add('esconder')
+    }
+    cargar_cancion()
+}
+
 // automatically play the next song at the end of the audio object's duration
 song.addEventListener('ended', function(){
     nextSong();
@@ -113,7 +181,7 @@ song.addEventListener('ended', function(){
 // function where songIndex is incremented, song/thumbnail image/background image/song artist/song title changes to next index value, and playPause() runs to play next track 
 function nextSong() {
     songIndex++;
-    if (songIndex < archivos) {
+    if (songIndex >= archivos) {
         songIndex = 0;
     };
     song.src = songs[songIndex];
@@ -128,8 +196,8 @@ function nextSong() {
 // function where songIndex is decremented, song/thumbnail image/background image/song artist/song title changes to previous index value, and playPause() runs to play previous track 
 function previousSong() {
     songIndex--;
-    if (songIndex < 1) {
-        songIndex = archivos;
+    if (songIndex <= 0) {
+        songIndex = archivos - 1;
     };
     song.src = songs[songIndex];
     thumbnail.src = thumbnails[songIndex];
@@ -145,13 +213,17 @@ function updateProgressValue() {
     progressBar.max = song.duration;
     progressBar.value = song.currentTime;
     document.querySelector('.currentTime').innerHTML = (formatTime(Math.floor(song.currentTime)));
+    tiempo_inicial[1].innerHTML = (formatTime(Math.floor(song.currentTime)));
     if (document.querySelector('.durationTime').innerHTML === "NaN:NaN") {
         document.querySelector('.durationTime').innerHTML = "0:00";
+        tiempo[1].innerHTML = "0:00";
     } else {
         document.querySelector('.durationTime').innerHTML = (formatTime(Math.floor(song.duration)));
+        tiempo[1].innerHTML = (formatTime(Math.floor(song.duration)));
     }
 };
-
+var tiempo_inicial = document.getElementsByClassName('currentTime');
+var tiempo = document.getElementsByClassName('durationTime');
 // convert song.currentTime and song.duration into MM:SS format
 function formatTime(seconds) {
     let min = Math.floor((seconds / 60));
@@ -179,7 +251,7 @@ function cargar_cancion(){
             e.preventDefault();
             barra[0].setAttribute("style", "display: block;");
             var a = songTitles.indexOf(titulo[i].textContent)
-            console.log(a)
+            songIndex = a
             song.src = songs[a];
             thumbnail.src = thumbnails[a];
             background.src = thumbnails[a];

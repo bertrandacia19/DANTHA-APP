@@ -21,11 +21,9 @@
 
 <div id="contenedor">
   <div id="musica" class="pagina">
-      <h1>El inicio de la aplicación</h1>
-      <div class="cancion"></div>
   </div>
   <div id="album" class="pagina esconder">
-      <h1>Las canciones que el usuario tiene guardado en su computadora</h1>
+      
   </div>
   <div id="cantante" class="pagina esconder">
       <h1>Configuración de la aplicación</h1>
@@ -39,13 +37,10 @@
   
   </div>
 </div>
-
         <div class="Down-Bar">
-
           <a href="#" id="close">
             <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSIxNHB4IiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxNCAxNCIgd2lkdGg9IjE0cHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6c2tldGNoPSJodHRwOi8vd3d3LmJvaGVtaWFuY29kaW5nLmNvbS9za2V0Y2gvbnMiIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIj48dGl0bGUvPjxkZXNjLz48ZGVmcy8+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBpZD0iUGFnZS0xIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSI+PGcgZmlsbD0iI0ZGRkZGRiIgaWQ9IkNvcmUiIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0zNDEuMDAwMDAwLCAtODkuMDAwMDAwKSI+PGcgaWQ9ImNsb3NlIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzNDEuMDAwMDAwLCA4OS4wMDAwMDApIj48cGF0aCBkPSJNMTQsMS40IEwxMi42LDAgTDcsNS42IEwxLjQsMCBMMCwxLjQgTDUuNiw3IEwwLDEyLjYgTDEuNCwxNCBMNyw4LjQgTDEyLjYsMTQgTDE0LDEyLjYgTDguNCw3IEwxNCwxLjQgWiIgaWQ9IlNoYXBlIi8+PC9nPjwvZz48L2c+PC9zdmc+" height="18" width="18">
           </a>
-        
           <div class="get-started-container">
             <div class="row no-margin">
         
@@ -79,16 +74,18 @@
                     <div class="currentTime"></div>
                     <div class="durationTime"></div>
                 </div>
-            
-                <script src="player.js"></script>
               </div>
-        
             </div>
           </div>
         </div>
         <div>
         <nav>
-          <a href="#" class="no-padding-right get-stated-show" id="get-started-btn">
+          <a href="#" class="no-padding-right get-stated-show" id="get-started-btn" name="get-started-btn">
+            <menu for="get-started-btn">
+              <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" class="muestra"/>
+              <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" class="muestra"/>
+              <img src="./assets/icons/backward.png" onclick="previousSong()" id="previous-song" class="muestra"/>
+            </menu>
           </a>
           <input 
                         type="range" 
@@ -100,13 +97,6 @@
                     />
                     <div class="currentTime"></div>
                     <div class="durationTime"></div>  
-                    
-          <menu>
-            <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" />
-            <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" />
-            <img src="./assets/icons/backward.png" onclick="previousSong()" id="previous-song" />  
-        </menu>
-          
         </nav>
       
   </body>
@@ -120,11 +110,14 @@
         $('.Down-Bar').slideToggle();
       });
     });
-    $(function () {
-      $(".navigation_icon").click(function () {
-        $(".navigation").toggleClass("navigation-open");
-      });
+    $(".muestra").on("click", function(event){
+      event.stopPropagation();
     });
+    var content = document.getElementById('contenedor')
+    content.style.display="none"
+    setTimeout(function(){
+      content.style.display="block"
+    }, 5000)
     </script>
 
 </html>
