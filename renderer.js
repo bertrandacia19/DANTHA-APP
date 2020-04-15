@@ -11,6 +11,7 @@ const navprogressBar = document.querySelector('nav #progress-bar')
 const enlaces = document.getElementsByClassName('item-menu');
 const albumes = document.getElementsByClassName('albumes');
 const cantante = document.getElementsByClassName('artistas');
+const genero_folder = document.getElementsByClassName('genero');
 var archivos = 0;
 const cancion = document.getElementById('musica');
 let html = "";
@@ -18,6 +19,8 @@ const album = document.getElementById('album');
 let html2 = "";
 const artistas = document.getElementById('cantante');
 let html3 = "";
+const generos = document.getElementById('genero');
+let html4 = "";
 
 for (let i = 0; i < enlaces.length; i++) {
     enlaces[i].addEventListener('click', function(e) {
@@ -36,6 +39,9 @@ for (let i = 0; i < enlaces.length; i++) {
             for (let j = 0; j < cantante.length; j++) {
                 cantante[j].classList.add('esconder')
             }
+            for (let j = 0; j < genero_folder.length; j++) {
+                genero_folder[j].classList.add('esconder')
+            }
         }
         document.getElementById(idElemento).classList.remove('esconder');
         if(idElemento === "musica"){
@@ -53,6 +59,11 @@ for (let i = 0; i < enlaces.length; i++) {
                 cantante[j].classList.remove('esconder')
             }
         }
+        if(idElemento === "genero"){
+            for (let j = 0; j < genero_folder.length; j++) {
+                genero_folder[j].classList.remove('esconder')
+            }
+        }
     })        
 }
 
@@ -61,6 +72,8 @@ songIndex = 0;
 var songs = []; // object storing paths for audio objects
 var distinct = [];
 var albums = [];
+var genero_dist = [];
+var genero = [];
 thumbnails = []; // object storing paths for album covers and backgrounds
 var cantantes = [];
 var songArtists = []; // object storing track artists
@@ -84,6 +97,7 @@ Fs.readdir(directoryPath, function (err, files) {
         songTitles.push(`${tag.tags.title ?? file}`);
         songArtists.push(`${tag.tags.artist ?? "no definido"}`);
         albums.push(`${tag.tags.album ?? "no definido"}`);
+        genero.push(`${tag.tags.genre ?? "no definido"}`);
           if (image) {
             var base64String = "";
             for (var i = 0; i < image.data.length; i++) {
@@ -115,6 +129,7 @@ function cargar() {
     cancion.innerHTML = html;
     cargar_album();
     cargar_cantantes();
+    cargar_genero();
     cargar_cancion();
     console.log(distinct);
 }
@@ -223,6 +238,50 @@ function cargar_cantantes(){
     artistas.innerHTML = html3;
     for (let j = 0; j < cantante.length; j++) {
         cantante[j].classList.add('esconder');
+    }
+    cargar_cancion()
+}
+
+var count3 = 0;
+var start3 = false;
+function cargar_genero(){
+    for(let i = 0;i<genero.length; i++){
+        for(let j = 0;j<genero.length; j++){
+            if(genero[i] === genero_dist[j]){
+                start3 = true;
+            }
+        }
+        count3++; 
+        if (count3 == 1 && start3 == false) { 
+            genero_dist.push(genero[i]); 
+        } 
+        start3 = false; 
+        count3 = 0; 
+    }
+    for(let j = 0;j<genero_dist.length; j++){
+        var cont = 0;
+        html4 += "<div class=genero>"
+        for (let i = 0; i < songTitles.length; i++){
+            if(genero_dist[j] === genero[i] && cont == 0){
+                html4 += "<img src="+thumbnails[i]+">";
+                cont++
+            }
+        }
+        html4 += "<h2 class= titulo>"+genero_dist[j]+"</h2>";
+        for (var i = 0; i < songTitles.length; i++){
+            if(genero_dist[j] === genero[i]){
+                html4 += "<div class=esconder onclick=cargar_cancion()>";
+                html4 += "<img src="+thumbnails[i]+">";
+                html4 += "<h2 class= titulo>"+songTitles[i]+"</h2>";
+                html4 += "<h3 class= art>"+songArtists[i]+"</h3>";
+                html4 += "</div>";
+            }
+        }
+        html4 +="</div>"
+    }
+    generos.innerHTML = html4;
+    for (let j = 0; j < genero_folder.length; j++) {
+        genero_folder[j].classList.add('esconder');
     }
     cargar_cancion()
 }
