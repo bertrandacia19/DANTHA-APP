@@ -30,6 +30,17 @@ body, html{
    margin: 5px; 
 }
 
+.artistas {
+  border-radius:16px;
+  cursor: pointer;
+  background-color:rgb(71, 66, 66);
+  left: 23%;
+  width: 250px;
+  height: 320px;
+  padding: 0px;
+  margin: 5px; 
+}
+
 body{
   background:#000;
   font-family: tahoma;
@@ -67,6 +78,11 @@ menu img.thumbnail{
 }
 
 #album{
+  display: flex;
+  flex-direction: row;
+}
+
+#cantante{
   display: flex;
   flex-direction: row;
 }

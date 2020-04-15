@@ -10,11 +10,14 @@ const progressBar = document.querySelector('#progress-bar'); // element where pr
 const navprogressBar = document.querySelector('nav #progress-bar')
 const enlaces = document.getElementsByClassName('item-menu');
 const albumes = document.getElementsByClassName('albumes');
+const cantante = document.getElementsByClassName('artistas');
 var archivos = 0;
 const cancion = document.getElementById('musica');
 let html = "";
 const album = document.getElementById('album');
 let html2 = "";
+const artistas = document.getElementById('cantante');
+let html3 = "";
 
 for (let i = 0; i < enlaces.length; i++) {
     enlaces[i].addEventListener('click', function(e) {
@@ -30,6 +33,9 @@ for (let i = 0; i < enlaces.length; i++) {
             for (let j = 0; j < albumes.length; j++) {
                 albumes[j].classList.add('esconder')
             }
+            for (let j = 0; j < cantante.length; j++) {
+                cantante[j].classList.add('esconder')
+            }
         }
         document.getElementById(idElemento).classList.remove('esconder');
         if(idElemento === "musica"){
@@ -42,6 +48,11 @@ for (let i = 0; i < enlaces.length; i++) {
                 albumes[j].classList.remove('esconder')
             }
         }
+        if(idElemento === "cantante"){
+            for (let j = 0; j < cantante.length; j++) {
+                cantante[j].classList.remove('esconder')
+            }
+        }
     })        
 }
 
@@ -51,7 +62,7 @@ var songs = []; // object storing paths for audio objects
 var distinct = [];
 var albums = [];
 thumbnails = []; // object storing paths for album covers and backgrounds
-
+var cantantes = [];
 var songArtists = []; // object storing track artists
 var songTitles = []; // object storing track titles
 
@@ -93,8 +104,6 @@ Fs.readdir(directoryPath, function (err, files) {
   cargar_cancion()
 });
 
-var count = 0;
-var start = false;
 function cargar() {
     for (var i = 0; i < songTitles.length; i++){
         html += "<div class=cancion onclick=cargar_cancion()>";
@@ -105,7 +114,8 @@ function cargar() {
     }
     cancion.innerHTML = html;
     cargar_album();
-    cargar_cancion()
+    cargar_cantantes();
+    cargar_cancion();
     console.log(distinct);
 }
 
@@ -129,6 +139,8 @@ function playPause() {
     }
 }
 
+var count = 0;
+var start = false;
 function cargar_album(){
     for(let i = 0;i<albums.length; i++){
         for(let j = 0;j<albums.length; j++){
@@ -143,8 +155,6 @@ function cargar_album(){
         start = false; 
         count = 0; 
     }
-    console.log(html2)
-    console.log(distinct);
     for(let j = 0;j<distinct.length; j++){
         var cont = 0;
         html2 += "<div class=albumes>"
@@ -168,7 +178,51 @@ function cargar_album(){
     }
     album.innerHTML = html2;
     for (let j = 0; j < albumes.length; j++) {
-        albumes[j].classList.add('esconder')
+        albumes[j].classList.add('esconder');
+    }
+    cargar_cancion()
+}
+
+var count2 = 0;
+var start2 = false;
+function cargar_cantantes(){
+    for(let i = 0;i<songArtists.length; i++){
+        for(let j = 0;j<songArtists.length; j++){
+            if(songArtists[i] === cantantes[j]){
+                start2 = true;
+            }
+        }
+        count2++; 
+        if (count2 == 1 && start2 == false) { 
+            cantantes.push(songArtists[i]); 
+        } 
+        start2 = false; 
+        count2 = 0; 
+    }
+    for(let j = 0;j<cantantes.length; j++){
+        var cont = 0;
+        html3 += "<div class=artistas>"
+        for (let i = 0; i < songTitles.length; i++){
+            if(cantantes[j] === songArtists[i] && cont == 0){
+                html3 += "<img src="+thumbnails[i]+">";
+                cont++
+            }
+        }
+        html3 += "<h2 class= titulo>"+cantantes[j]+"</h2>";
+        for (var i = 0; i < songTitles.length; i++){
+            if(cantantes[j] === songArtists[i]){
+                html3 += "<div class=esconder onclick=cargar_cancion()>";
+                html3 += "<img src="+thumbnails[i]+">";
+                html3 += "<h2 class= titulo>"+songTitles[i]+"</h2>";
+                html3 += "<h3 class= art>"+songArtists[i]+"</h3>";
+                html3 += "</div>";
+            }
+        }
+        html3 +="</div>"
+    }
+    artistas.innerHTML = html3;
+    for (let j = 0; j < cantante.length; j++) {
+        cantante[j].classList.add('esconder');
     }
     cargar_cancion()
 }
