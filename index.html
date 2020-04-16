@@ -32,8 +32,7 @@
     
   </div>
   <div id="playlist" class="pagina esconder">
-  <h1>Configuración de la aplicación</h1>
-  
+    
   </div>
 </div>
         <div class="Down-Bar">
@@ -84,6 +83,7 @@
               <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" class="muestra"/>
               <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" class="muestra"/>
               <img src="./assets/icons/backward.png" onclick="previousSong()" id="previous-song" class="muestra"/>
+              <input class = "muestra"id="vol-control" type="range" min="0" max="100" step="1" oninput="SetVolume(this.value)" onchange="SetVolume(this.value)"></input>
             </menu>
           </a>
           <input 
@@ -117,6 +117,6 @@
     setTimeout(function(){
       content.style.display="block"
     }, 5000)
-    </script>
+  </script>
 
 </html>

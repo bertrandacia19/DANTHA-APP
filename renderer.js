@@ -376,3 +376,10 @@ function cargar_cancion(){
     }
     
 }
+
+function SetVolume(val){
+    const volumen = document.getElementById('song')
+    console.log('Before: ' + volumen.volume);
+    volumen.volume = val / 100;
+    console.log('After: ' + volumen.volume);
+    }
