@@ -12,6 +12,8 @@ const enlaces = document.getElementsByClassName('item-menu');
 const albumes = document.getElementsByClassName('albumes');
 const cantante = document.getElementsByClassName('artistas');
 const genero_folder = document.getElementsByClassName('genero');
+const casilla = document.getElementsByClassName('casilla')
+const playlists = document.getElementsByClassName('playlist')
 var archivos = 0;
 const cancion = document.getElementById('musica');
 let html = "";
@@ -21,6 +23,8 @@ const artistas = document.getElementById('cantante');
 let html3 = "";
 const generos = document.getElementById('genero');
 let html4 = "";
+const playlis = document.getElementById('playlist');
+let html5 = "";
 
 for (let i = 0; i < enlaces.length; i++) {
     enlaces[i].addEventListener('click', function(e) {
@@ -42,6 +46,12 @@ for (let i = 0; i < enlaces.length; i++) {
             for (let j = 0; j < genero_folder.length; j++) {
                 genero_folder[j].classList.add('esconder')
             }
+            for (let j = 0; j < casilla.length; j++) {
+                casilla[j].classList.add('esconder')
+            }
+            for (let j = 0; j < playlists.length; j++) {
+                playlists[j].classList.add('esconder')
+            }
         }
         document.getElementById(idElemento).classList.remove('esconder');
         if(idElemento === "musica"){
@@ -62,6 +72,14 @@ for (let i = 0; i < enlaces.length; i++) {
         if(idElemento === "genero"){
             for (let j = 0; j < genero_folder.length; j++) {
                 genero_folder[j].classList.remove('esconder')
+            }
+        }
+        if(idElemento === "playlist"){
+            for (let j = 0; j < casilla.length; j++) {
+                casilla[j].classList.remove('esconder')
+            }
+            for (let j = 0; j < playlists.length; j++) {
+                playlists[j].classList.remove('esconder')
             }
         }
     })        
@@ -130,9 +148,11 @@ function cargar() {
     cargar_album();
     cargar_cantantes();
     cargar_genero();
+    crear_playlist();
+    cargar_playlist()
     cargar_cancion();
-    console.log(distinct);
 }
+
 
 let playing = true;
 function playPause() {
@@ -286,6 +306,94 @@ function cargar_genero(){
     cargar_cancion()
 }
 
+function crear_playlist(){
+    html5 += "<input class=casilla type=button id=Guardar value=Guardar onclick=crear()>"
+    html5 += "<input class=casilla type=text id=Nombre_playlist>"
+    for (var i = 0; i < songTitles.length; i++){
+        html5 += "<div class=casilla>";
+        html5 += "<input type=checkbox class=checked>";
+        html5 += "<p class=titulo>"+songTitles[i]+"</p>";
+        html5 += "</div>";
+    }
+    playlis.innerHTML = html5;
+    for (let j = 0; j < casilla.length; j++) {
+        casilla[j].classList.add('esconder');
+    }
+}
+var content = "";
+function crear(){
+    const checkbox = document.getElementsByClassName('checked');
+    const rola = document.getElementById('Nombre_playlist');
+    Fs.open("./Playlist/"+rola.value+".txt", 'a', function(err,archivo){
+        if(err){
+            return;
+        }
+        var linea = "";
+        for(let i = 0; i < checkbox.length; i++){
+            if(checkbox[i].checked == true){
+                linea += ""+songTitles[i]+"\n";
+            }
+        }
+        Fs.write(archivo, linea, function(err,writeten,string){
+            if(err){
+                return;
+            }
+        })
+        Fs.readFile("./Playlist/"+rola.value+".txt", "utf8", function read(err, data) {
+            if (err) {
+                throw err;
+            }
+            content = data.split("\n");
+            console.log(content);
+        });
+    });
+    cargar_playlist()
+}
+
+const playli_final = document.getElementById('playlists');
+function cargar_playlist(){
+    Fs.readdir('./Playlist', function (err, files) {
+        if (err) {
+          return console.log('Unable to scan directory: ' + err);
+        } 
+        files.forEach(function (file) {
+            let html6 = "";
+          if(file.indexOf(".txt")=== -1){
+            return
+          }
+          html6 += "<div class=playlist>"
+          var playlis_songs = ""; 
+          var cont = 0;
+          Fs.readFile("./Playlist/"+file+"", "utf8", function read(err, data) {
+            if (err) {
+                throw err;
+            }
+            playlis_songs = data.split("\n");
+            for(let j = 0;j<playlis_songs.length; j++){
+                for (let i = 0; i < songTitles.length; i++){
+                    if(playlis_songs[j] === songTitles[i] && cont == 0){
+                        html6 += "<img src="+thumbnails[i]+">";
+                        html6 += "<h2 class= titulo>"+file.substr(0, file.lastIndexOf('.'))+"</h2>";
+                        cont++
+                    }
+                }
+                for (var i = 0; i < songTitles.length; i++){
+                    if(playlis_songs[j] === songTitles[i]){
+                        html6 += "<div class=esconder onclick=cargar_cancion()>";
+                        html6 += "<img src="+thumbnails[i]+">";
+                        html6 += "<h2 class= titulo>"+songTitles[i]+"</h2>";
+                        html6 += "<h3 class= art>"+songArtists[i]+"</h3>";
+                        html6 += "</div>";
+                    }
+                }
+            }
+            html6 +="</div>"
+            playlis.innerHTML += html6;
+            });
+        });
+    });
+}
+
 // automatically play the next song at the end of the audio object's duration
 song.addEventListener('ended', function(){
     nextSong();
@@ -374,7 +482,6 @@ function cargar_cancion(){
             playPause();
         })
     }
-    
 }
 
 function SetVolume(val){
@@ -382,4 +489,5 @@ function SetVolume(val){
     console.log('Before: ' + volumen.volume);
     volumen.volume = val / 100;
     console.log('After: ' + volumen.volume);
-    }
+}
+
