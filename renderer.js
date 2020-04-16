@@ -1,13 +1,18 @@
-const background = document.querySelector('#background'); // background derived from album cover below
-const thumbnail = document.querySelector('#thumbnail'); // album cover 
-const song = document.querySelector('#song'); // audio object
+const background = document.querySelector('#background'); 
+const thumbnail = document.querySelector('#thumbnail'); 
+const thumbnail2 = document.querySelector('menu img.thumbnail');
+const song = document.querySelector('#song'); 
 const Fs = require('fs');
 const util = require('util');
 var jsmediatags = require("jsmediatags");
-const songArtist = document.querySelector('.song-artist'); // element where track artist appears
-const songTitle = document.querySelector('.song-title'); // element where track title appears
-const progressBar = document.querySelector('#progress-bar'); // element where progress bar appears
+const songArtist = document.querySelector('.song-artist'); 
+const songTitle = document.querySelector('.song-title');
+const songArtist2 = document.querySelector('.song-artist2'); 
+const songTitle2 = document.querySelector('.song-title2'); 
+const progressBar = document.querySelector('#progress-bar'); 
+const Bar = document.querySelector('#bar'); 
 const navprogressBar = document.querySelector('nav #progress-bar')
+const navBar = document.querySelector('nav #bar')
 const enlaces = document.getElementsByClassName('item-menu');
 const albumes = document.getElementsByClassName('albumes');
 const cantante = document.getElementsByClassName('artistas');
@@ -25,6 +30,8 @@ const generos = document.getElementById('genero');
 let html4 = "";
 const playlis = document.getElementById('playlist');
 let html5 = "";
+
+
 
 for (let i = 0; i < enlaces.length; i++) {
     enlaces[i].addEventListener('click', function(e) {
@@ -86,6 +93,7 @@ for (let i = 0; i < enlaces.length; i++) {
 }
 
 let pPause = document.querySelector('#play-pause'); // element where play and pause image appears
+let pPause1 = document.querySelector('menu #play-pause'); // element where play and pause image appears
 songIndex = 0;
 var songs = []; // object storing paths for audio objects
 var distinct = [];
@@ -99,6 +107,12 @@ var songTitles = []; // object storing track titles
 
 // function where pp (play-pause) element changes based on playing boolean value - if play button clicked, change pp.src to pause button and call song.play() and vice versa.
 const directoryPath = '/Users/Usuario/Music';
+
+function browseResult(e){
+    var fileselector = document.getElementById('fileselector');
+    console.log(fileselector.value);
+  }
+
 Fs.readdir(directoryPath, function (err, files) {
   if (err) {
     return console.log('Unable to scan directory: ' + err);
@@ -149,8 +163,16 @@ function cargar() {
     cargar_cantantes();
     cargar_genero();
     crear_playlist();
-    cargar_playlist()
+    cargar_playlist();
     cargar_cancion();
+    song.src = songs[songIndex];
+    thumbnail.src = thumbnails[songIndex];
+    background.src = thumbnails[songIndex];
+    thumbnail2.src = thumbnails[songIndex];
+    songArtist.innerHTML = songArtists[songIndex];
+    songTitle.innerHTML = songTitles[songIndex];
+    songArtist2.innerHTML = songArtists[songIndex];
+    songTitle2.innerHTML = songTitles[songIndex];
 }
 
 
@@ -159,15 +181,21 @@ function playPause() {
     if (playing) {
         const song = document.querySelector('#song'),
         thumbnail = document.querySelector('#thumbnail');
-
+                                         
         pPause.src = "./assets/icons/pause.png"
         thumbnail.style.transform = "scale(1.15)";
         
+        pPause1.src = "./assets/icons/pause.png"
+        thumbnail2.style.transform = "scale(1.15)";
+
         song.play();
         playing = false;
     } else {
         pPause.src = "./assets/icons/play.png"
         thumbnail.style.transform = "scale(1)"
+
+        pPause1.src = "./assets/icons/play.png"
+        thumbnail2.style.transform = "scale(1)"
         
         song.pause();
         playing = true;
@@ -408,11 +436,22 @@ function nextSong() {
     song.src = songs[songIndex];
     thumbnail.src = thumbnails[songIndex];
     background.src = thumbnails[songIndex];
+    thumbnail2.src = thumbnails[songIndex];
     songArtist.innerHTML = songArtists[songIndex];
     songTitle.innerHTML = songTitles[songIndex];
+    songArtist2.innerHTML = songArtists[songIndex];
+    songTitle2.innerHTML = songTitles[songIndex];
     playing = true;
     playPause();
+    for (let i = 0; i<movimiento.length; i++){
+         movimiento[i].removeAttribute("behavior")
+         movimiento[i].removeAttribute("scrollamount")
+         movimiento[i].removeAttribute("direction")
+        
+         console.log(movimiento[i])
+    }
 }
+var movimiento = document.getElementsByClassName("move")
 
 // function where songIndex is decremented, song/thumbnail image/background image/song artist/song title changes to previous index value, and playPause() runs to play previous track 
 function previousSong() {
@@ -423,8 +462,11 @@ function previousSong() {
     song.src = songs[songIndex];
     thumbnail.src = thumbnails[songIndex];
     background.src = thumbnails[songIndex];
+    thumbnail2.src = thumbnails[songIndex];
     songArtist.innerHTML = songArtists[songIndex];
     songTitle.innerHTML = songTitles[songIndex];
+    songArtist2.innerHTML = songArtists[songIndex];
+    songTitle2.innerHTML = songTitles[songIndex];
     playing = true;
     playPause();
 }
@@ -433,6 +475,9 @@ function previousSong() {
 function updateProgressValue() {
     progressBar.max = song.duration;
     progressBar.value = song.currentTime;
+    Bar.max = song.duration;
+    Bar.value = song.currentTime;
+    
     document.querySelector('.currentTime').innerHTML = (formatTime(Math.floor(song.currentTime)));
     tiempo_inicial[1].innerHTML = (formatTime(Math.floor(song.currentTime)));
     if (document.querySelector('.durationTime').innerHTML === "NaN:NaN") {
@@ -460,8 +505,9 @@ setInterval(updateProgressValue, 500);
 
 // function where progressBar.value is changed when slider thumb is dragged without auto-playing audio
 function changeProgressBar() {
-    song.currentTime = progressBar.value;
+    song.currentTime = progressBar.value,bar.value;
 };
+
 
 const barra = document.getElementsByClassName('Down-Bar')
 function cargar_cancion(){
@@ -476,8 +522,11 @@ function cargar_cancion(){
             song.src = songs[a];
             thumbnail.src = thumbnails[a];
             background.src = thumbnails[a];
+            thumbnail2.src = thumbnails[a];
             songArtist.innerHTML = songArtists[a];
             songTitle.innerHTML = songTitles[a];
+            songArtist2.innerHTML = songArtists[a];
+            songTitle2.innerHTML = songTitles[a];
             playing = true;
             playPause();
         })
@@ -486,8 +535,5 @@ function cargar_cancion(){
 
 function SetVolume(val){
     const volumen = document.getElementById('song')
-    console.log('Before: ' + volumen.volume);
     volumen.volume = val / 100;
-    console.log('After: ' + volumen.volume);
 }
-

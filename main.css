@@ -73,11 +73,12 @@ p{
 }
 
 body{
-  background:#000;
+  padding: 25px;
+  background-color: #b2d8ed;
+  color: black;
   font-family: tahoma;
   padding: 0;
   margin: 0;
-  background: #0a0909;
 }
 
 
@@ -175,6 +176,7 @@ ul li:hover a{
   color: #283593;/*#ff5bff; #c67c00;*/
 }
 
+
 #contenedor{
   height: 100%;
   width: 80%;
@@ -182,11 +184,28 @@ ul li:hover a{
   float: right;
 }
 
+menu img.thumbnail{
+  position: absolute;
+  background-color: black;
+  width: 8%;
+  height: 97.79%;
+  align-items: center;
+  left: 0.1%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  bottom: 0%;
+  margin: 0%;
+  border: black;
+  transition: none !important;
+  transform: none !important;
+}
+
+
 menu {
   padding: 0;
   margin: 0;
   width: 100%;
-  height: 50px;
+  height: 67px;
   background-color: #031822;
   display: flex;
   position: fixed;
@@ -226,10 +245,10 @@ menu #play-pause {
   width: 46px;
   filter: invert(1);
   cursor: pointer;
-  bottom: 1.6%;
+  bottom: 15%;
   z-index: 4;
   font-size: 53px;
-  left: 38.5%;
+  left: 50%;
 }
 
 /* style for next and previous song images */
@@ -239,10 +258,10 @@ menu #next-song{
   width: 44px;
   filter: invert(1);
   cursor: pointer;
-  bottom: 2.5%;
+  bottom: 16%;
   font-size: 40px;
   z-index: 4;
-  left: 54%;
+  left: 65%;
 }
 
 menu #previous-song{
@@ -251,10 +270,10 @@ menu #previous-song{
   width: 44px;
   filter: invert(1);
   cursor: pointer;
-  bottom: 2.5%;
+  bottom: 16%;
   font-size: 40px;
   z-index: 4;
-  left: 24%;
+  left: 35%;
 }
 
 
@@ -297,7 +316,6 @@ menu #previous-song{
   justify-content: space-around;
   align-items: center;
   filter: blur(-1px)
-      
   }
 
   
@@ -307,8 +325,8 @@ menu #previous-song{
   
   #close {
     position: absolute;
-    right: 4%;
-    top: 15px;
+    right: 3%;
+    top: -9%;
     width: 2%;
     height: 2%;
     font-size: 0%;
@@ -403,6 +421,8 @@ menu #previous-song{
   border-radius: 10px;
   box-shadow: 0 0 10px #000000;
 }
+
+
 
 .cuadro {
   position: absolute;
@@ -505,7 +525,7 @@ menu #previous-song{
   height: 72px;
   width: 50px;
   cursor: pointer;
-  bottom: 0%;
+  bottom: 0.5%;
   left: 5%;
   z-index: 4;
   font-family: 'Montserrat', sans-serif;
@@ -530,14 +550,43 @@ menu #previous-song{
   color: rgb(193, 255, 6);
 }
 
+menu .song-artist2 {
+  position: absolute;
+  z-index: 4;
+  color: rgb(193, 255, 6);
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 17px;
+  bottom: 60%;
+  left: 9%;
+  text-align: center;
+}
+
+/* track title */
+ menu .song-title2 {
+  position: absolute;
+  z-index: 4;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 17px;
+  bottom: 38%;
+  left: 9%;
+  text-align: center;
+}
+
+marquee{
+  width: 20%;
+  align-items: center;
+}
+
 /* style for current time of the track */
 nav .currentTime {
   position: absolute;
   height: 72px;
   width: 50px;
   cursor: pointer;
-  bottom: 0%;
-  left: 5%;
+  bottom: -68%;
+  left: 11%;
   z-index: 4;
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
@@ -549,16 +598,16 @@ nav .currentTime {
 /* style for the total length of the track */
 nav .durationTime {
   position: absolute;
-  height: 72px;
+  height: 50px;
   width: 50px;
   cursor: pointer;
-  bottom: 4%;
-  right: 4%;
+  bottom: -38%;
+  right: 5%;
   z-index: 4;
   font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   align-items: center;
-  color: rgb(193, 255, 6);
+  color: white;
 }
 
 /* style for the progress bar */
@@ -583,7 +632,7 @@ nav .durationTime {
   z-index: 4;
   height: 5px;
   background: #000000;
-  bottom: 8%;
+  bottom: 98%;
   border-radius: 30px;
   left: 0%;
 }
@@ -652,3 +701,63 @@ nav .durationTime {
 }
 
 
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  z-index: 4;
+  height: 8px;
+  background: #000000;
+  width: 5%;
+  bottom: 60%;
+  border-radius: 30px;
+  left: 90%;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -3px;
+  margin-left: 0px;
+  height: 12px;
+  width: 7px;
+  border: 0;
+  bottom: -5%;
+  background: -webkit-linear-gradient(45deg,  rgb(213, 213, 213), rgb(4, 38, 51));
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+
+
+
+
+ .browser{
+  width: 51px;
+  height: 45px;
+  position:absolute;
+  left: 94.8%;
+  top: 7%;
+}
+
+.carpeta{
+  width: 45px;
+  height: 45px;
+}
+
+
+.dark { 
+  width: 50px;
+  height: 45px;
+  background-color:#031822;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+ /* transition: all 1s*/
+}
+
+/*.dark:hover{
+transform: rotate(1080deg) 
+}*/
+  .dark-mode {
+    background-color: black;
+    color: #ecf0f1;
+  }
