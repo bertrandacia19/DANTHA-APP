@@ -6,7 +6,14 @@
     <link rel="stylesheet" href="./main.css" type="text/css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
-  <body onload="cargar()">
+  <body onload = "cargar()">
+    <div class='node' id='darkmode'>
+      <img class="dark"  src="./assets/icons/dom.png" ALIGN=RIGHT  onclick="myFunction()"/>
+
+        <input id="fileselector" type="file" onchange="browseResult(event)" webkitdirectory directory multiple="false" style="display:none" />
+        <button class="browser" onclick="getElementById('fileselector').click()"><img class="carpeta" src="./assets/icons/carpeta.png" ALIGN=RIGHT></button>
+      
+    </div>
 
 <div class="side-bar">
 
@@ -89,25 +96,32 @@
         <nav>
           <a href="#" class="no-padding-right get-stated-show" id="get-started-btn" name="get-started-btn">
             <menu for="get-started-btn">
-              <img class="thumbnail muestra" >
+              <img class="thumbnail " >
+              <marquee  behavior = "scroll" scrollamount = "2" direction = "right" class="song-artist2 move "></marquee>
+              <marquee  behavior = "scroll" scrollamount = "2" direction = "right" class="song-title2 move "></marquee>
               <img src="./assets/icons/play.png" onclick="playPause()" id="play-pause" class="muestra"/>
               <img src="./assets/icons/forward.png" onclick="nextSong()" id="next-song" class="muestra"/>
               <img src="./assets/icons/backward.png" onclick="previousSong()" id="previous-song" class="muestra"/>  
-            </menu>
-          </a>
-          <input 
+              <div class="currentTime"></div>
+              <div class="durationTime"></div>  
+              <input 
                         type="range" 
                         id="bar" 
                         min="0" 
+                        class="muestra"
                         max="" 
                         value="0" 
                         onchange="changeProgressBar()"
                     />
+
                     <div class="currentTime"></div>
-                    <div class="durationTime"></div>  
-                    
-          
-        </nav>
+                    <div class="durationTime"></div>
+
+              <div class="slidecontainer justify-content-start">
+                <input type="range" min="0" max="100" value="100" class="slider muestra" id="myRange">
+              </div>
+            </menu>
+          </a>
       
   </body>
   <!-- You can also require other files to run in this process -->
@@ -123,6 +137,19 @@
     $(".muestra").on("click", function(event){
       event.stopPropagation();
     });
+
+    var content = document.getElementById('contenedor')
+    content.style.display="none"
+    setTimeout(function(){
+      content.style.display="block"
+    }, 5000)
     </script>
 
+    <script>
+      function myFunction() {
+     var element = document.body;
+     element.classList.toggle("dark-mode");
+
+  }
+    </script>
 </html>
