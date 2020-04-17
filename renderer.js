@@ -20,7 +20,7 @@ const genero_folder = document.getElementsByClassName('genero');
 const casilla = document.getElementsByClassName('casilla')
 const playlists = document.getElementsByClassName('playlist')
 var archivos = 0;
-const cancion = document.getElementById('musica');
+const cancion = document.getElementById('Alitas0101');
 let html = "";
 const album = document.getElementById('album');
 let html2 = "";
@@ -38,9 +38,13 @@ for (let i = 0; i < enlaces.length; i++) {
         e.preventDefault();
         const idElemento = e.currentTarget.getAttribute('data-elemento');
         const paginas = document.getElementsByClassName('pagina');
-        const canciones = document.getElementsByClassName('cancion');
+        const canciones = document.getElementsByClassName('imgBx');
+        const swipper = document.getElementsByClassName('swiper-container')
         for (let j = 0; j < paginas.length; j++) {
             paginas[j].classList.add('esconder')
+            for (let j = 0; j < swipper.length; j++) {
+                swipper[j].classList.add('esconder')
+            }
             for (let j = 0; j < canciones.length; j++) {
                 canciones[j].classList.add('esconder')
             }
@@ -64,6 +68,9 @@ for (let i = 0; i < enlaces.length; i++) {
         if(idElemento === "musica"){
             for (let j = 0; j < canciones.length; j++) {
                 canciones[j].classList.remove('esconder')
+            }
+            for (let j = 0; j < swipper.length; j++) {
+                swipper[j].classList.remove('esconder')
             }
         }
         if(idElemento === "album"){
@@ -111,7 +118,7 @@ const directoryPath = '/Users/Usuario/Music';
 function browseResult(e){
     var fileselector = document.getElementById('fileselector');
     console.log(fileselector.value);
-  }
+}
 
 Fs.readdir(directoryPath, function (err, files) {
   if (err) {
@@ -152,10 +159,12 @@ Fs.readdir(directoryPath, function (err, files) {
 
 function cargar() {
     for (var i = 0; i < songTitles.length; i++){
-        html += "<div class=cancion onclick=cargar_cancion()>";
+        html += "<div class=swiper-slide>";
+        html += "<div class=imgBx id=SanBenito onclick=cargar_cancion()>";
         html += "<img src="+thumbnails[i]+">";
         html += "<h2 class= titulo>"+songTitles[i]+"</h2>";
         html += "<h3 class= art>"+songArtists[i]+"</h3>";
+        html += "</div>";
         html += "</div>";
     }
     cancion.innerHTML = html;
@@ -511,7 +520,7 @@ function changeProgressBar() {
 
 const barra = document.getElementsByClassName('Down-Bar')
 function cargar_cancion(){
-    const canciones = document.getElementsByClassName('cancion');
+    const canciones = document.getElementsByClassName('imgBx');
     const titulo = document.getElementsByClassName('titulo');
     for (let i = 0; i < canciones.length; i++) {
         canciones[i].addEventListener('click', function(e) {

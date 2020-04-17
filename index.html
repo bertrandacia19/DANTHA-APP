@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Dantha Player Music</title>
     <link rel="stylesheet" href="./main.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
   <body onload = "cargar()">
@@ -28,6 +30,17 @@
 
 <div id="contenedor">
   <div id="musica" class="pagina">
+    <div class="swiper-container">
+      <div class="swiper-wrapper" id="Alitas0101">
+        <div class="swiper-slide">
+          <div class="imgBx" id="SanBenito">
+          </div>
+        </div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+
   </div>
   <div id="album" class="pagina esconder">
       
@@ -112,6 +125,7 @@
                     <div class="durationTime"></div>
 
               <div class="slidecontainer justify-content-start">
+
                 <input class ="muestra slider" id="vol-control" type="range" min="0" max="100" step="1" oninput="SetVolume(this.value)" onchange="SetVolume(this.value)"></input>
               </div>
             </menu>
@@ -122,6 +136,25 @@
   <script src="./renderer.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+  <script type="text/javascript" src="swiper.min.js"></script>
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 500,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+  </script>
   <script>
     $(document).ready(function() {
       $('#get-started-btn, #close').click(function () {
@@ -144,4 +177,4 @@
 
   }
     </script>
-</html>
+  </html>
