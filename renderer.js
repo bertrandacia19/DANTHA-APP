@@ -99,6 +99,28 @@ for (let i = 0; i < enlaces.length; i++) {
     })        
 }
 
+const can_album = document.getElementsByClassName('can_album');
+        for (let i = 0; i < albumes.length; i++) {
+            albumes[i].addEventListener('click', function(e) {
+                e.preventDefault();
+                const idElemento = e.currentTarget.getAttribute('albumes');
+                for (let j = 0; j < albumes.length; j++) {
+                    albumes[j].classList.add('esconder')
+                }
+                for (let j = 0; j < can_album.length; j++) {
+                    can_album[j].classList.remove('esconder')
+                }
+            });
+        }
+        function goBack() {
+            for (let j = 0; j < albumes.length; j++) {
+                albumes[j].classList.remove('esconder')
+            }
+            for (let j = 0; j < can_album.length; j++) {
+                can_album[j].classList.add('esconder')
+            }
+        }
+
 let pPause = document.querySelector('#play-pause'); // element where play and pause image appears
 let pPause1 = document.querySelector('menu #play-pause'); // element where play and pause image appears
 songIndex = 0;
@@ -239,7 +261,7 @@ function cargar_album(){
         html2 += "<h2 class= titulo>"+distinct[j]+"</h2>";
         for (var i = 0; i < songTitles.length; i++){
             if(distinct[j] === albums[i]){
-                html2 += "<div class=esconder onclick=cargar_cancion()>";
+                html2 += "<div class=can_album onclick=cargar_cancion()>";
                 html2 += "<img src="+thumbnails[i]+">";
                 html2 += "<h2 class= titulo>"+songTitles[i]+"</h2>";
                 html2 += "<h3 class= art>"+songArtists[i]+"</h3>";
@@ -249,8 +271,12 @@ function cargar_album(){
         html2 +="</div>"
     }
     album.innerHTML = html2;
+    const can_albumes = document.getElementsByClassName('can_album')
     for (let j = 0; j < albumes.length; j++) {
         albumes[j].classList.add('esconder');
+    }
+    for (let j = 0; j < can_albumes.length; j++) {
+        can_albumes[j].classList.add('esconder');
     }
     cargar_cancion()
 }

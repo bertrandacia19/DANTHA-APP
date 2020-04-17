@@ -61,6 +61,17 @@ p{
   margin: 5px; 
 }
 
+.can_album {
+  border-radius:16px;
+  cursor: pointer;
+  background-color:rgb(71, 66, 66);
+  left: 23%;
+  width: 250px;
+  height: 320px;
+  padding: 0px;
+  margin: 5px; 
+}
+
 .playlist {
   border-radius:16px;
   cursor: pointer;
@@ -120,6 +131,10 @@ menu img.thumbnail{
 }
 
 #genero{
+  display: flex;
+  flex-direction: row;
+}
+#albumes{
   display: flex;
   flex-direction: row;
 }
